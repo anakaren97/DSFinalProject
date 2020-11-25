@@ -24,6 +24,13 @@ function setup() {
   button1.style("background-color", "transparent");
   button1.style("padding", "40px 40px");
 
+  backbutton = createButton('BACK');
+  backbutton.position(400,  500);
+  backbutton.mousePressed(goBack);
+  backbutton.style("color", "white");
+  backbutton.style("background-color", "black");
+  backbutton.style("padding", "20px 40px");
+
   frameRate(10);
   colorMode(HSB);
   background(0);
@@ -126,6 +133,11 @@ function windowResized() {
 function page5() {
   // let val = color(random(255),random(255),random(255));
   window.location='page5.html';
+}
+
+function goBack() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='index.html';
 }
 
 

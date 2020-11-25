@@ -14,6 +14,13 @@ function setup() {
   g = random(255);
   b = random(255);
 
+  button1 = createButton('Next');
+  button1.position(1000,  400);
+  button1.mousePressed(page6);
+  button1.style("color", "white");
+  button1.style("background-color", "transparent");
+  button1.style("padding", "40px 40px");
+
   button2.position(400,  height/4);
   button2.mousePressed(draw);
   button2.style("color", "white");
@@ -55,4 +62,9 @@ function draw(){
 function goBack() {
   // let val = color(random(255),random(255),random(255));
   window.location='index.html';
+}
+
+function page6() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page6.html';
 }
