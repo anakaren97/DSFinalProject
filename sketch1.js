@@ -6,6 +6,13 @@ let vid;
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   //video for stars
+  button1 = createButton('Next');
+  button1.position(1000,  400);
+  button1.mousePressed(page3);
+  button1.style("color", "white");
+  button1.style("background-color", "transparent");
+  button1.style("padding", "40px 40px");
+
  vid = createVideo(['video/star.mp4']);
  vid.elt.muted = true;
  vid.loop();
@@ -21,6 +28,9 @@ function setup() {
 
   noStroke();
   ambientMaterial(250);
+
+
+
 }
 
 function draw() {
@@ -101,4 +111,8 @@ class IntersectPlane {
   getLambda(Q, v) {
     return (-this.d - this.normal.dot(Q)) / this.normal.dot(v);
   }
+}
+
+function page3() {
+  window.location='page3.html';
 }

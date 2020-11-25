@@ -6,6 +6,12 @@ function setup() {
   backbutton = createButton('BACK');
   button2 = createButton('Click for Camera');
 
+  button1 = createButton('Next');
+  button1.position(1000,  400);
+  button1.mousePressed(page4);
+  button1.style("color", "white");
+  button1.style("background-color", "transparent");
+  button1.style("padding", "40px 40px");
 
   button2.position(400,  height/4);
   button2.mousePressed(draw);
@@ -42,4 +48,9 @@ function imageMirrored(img, x, y) {
 function goBack() {
   // let val = color(random(255),random(255),random(255));
   window.location='index.html';
+}
+
+function page4() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page4.html';
 }

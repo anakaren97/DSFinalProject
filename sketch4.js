@@ -13,6 +13,12 @@ function setup() {
   backbutton = createButton('BACK');
   button2 = createButton('Click for Audio Visualizer');
 
+  button1 = createButton('Next');
+  button1.position(1000,  400);
+  button1.mousePressed(page5);
+  button1.style("color", "white");
+  button1.style("background-color", "transparent");
+  button1.style("padding", "40px 40px");
 
   button2.position(400,  height/4);
   button2.mousePressed(draw);
@@ -55,4 +61,9 @@ function draw(){
 function goBack() {
   // let val = color(random(255),random(255),random(255));
   window.location='index.html';
+}
+
+function page5() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page5.html';
 }

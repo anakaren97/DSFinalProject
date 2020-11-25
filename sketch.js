@@ -10,7 +10,6 @@ function setup() {
 
   button1 = createButton('Start');
 
-
   button1.position(width/6, height/8);
   button1.mousePressed(page2);
   button1.style("color", "white");
