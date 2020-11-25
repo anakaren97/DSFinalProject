@@ -32,10 +32,7 @@ function draw() {
 
   // Left wall
   push();
-<<<<<<< HEAD
-     texture(vid);
-=======
->>>>>>> main
+  texture(vid);
   translate(-100, 0, 200);
   rotateY((90 * PI) / 180);
   plane(width, height);
@@ -43,7 +40,7 @@ function draw() {
 
   // Right wall
   push();
-   texture(vid);
+  texture(vid);
   translate(100, 0, 200);
   rotateY((90 * PI) / 180);
   plane(width, height);
