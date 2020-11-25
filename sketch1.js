@@ -32,7 +32,10 @@ function draw() {
 
   // Left wall
   push();
+<<<<<<< HEAD
      texture(vid);
+=======
+>>>>>>> main
   translate(-100, 0, 200);
   rotateY((90 * PI) / 180);
   plane(width, height);
