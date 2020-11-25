@@ -10,7 +10,7 @@ function setup() {
   button1.position(1000,  400);
   button1.mousePressed(page3);
   button1.style("color", "white");
-  button1.style("background-color", "transparent");
+  button1.style("background-color", "black");
   button1.style("padding", "40px 40px");
 
  vid = createVideo(['video/star.mp4']);

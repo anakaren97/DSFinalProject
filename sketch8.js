@@ -9,6 +9,14 @@ video.position(0,0);
   video.size(320, 240);
 
   background(50);
+
+  button2 = createButton('Previous');
+  button2.position(100,  400);
+  button2.mousePressed(previous);
+  button2.style("color", "white");
+  button2.style("background-color", "black");
+  button2.style("padding", "40px 40px");
+
 }
 
 function draw() {
@@ -23,4 +31,9 @@ function mousePressed(){
 
   save('myCanvas.png');
   return false;
+}
+
+function previous() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page6.html';
 }

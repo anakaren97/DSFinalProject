@@ -21,10 +21,17 @@ function setup() {
   button1.position(1000,  400);
   button1.mousePressed(page5);
   button1.style("color", "white");
-  button1.style("background-color", "transparent");
+  button1.style("background-color", "black");
   button1.style("padding", "40px 40px");
 
-  backbutton = createButton('BACK');
+  button2 = createButton('Previous');
+  button2.position(100,  400);
+  button2.mousePressed(previous);
+  button2.style("color", "white");
+  button2.style("background-color", "black");
+  button2.style("padding", "40px 40px");
+
+  backbutton = createButton('Home');
   backbutton.position(400,  500);
   backbutton.mousePressed(goBack);
   backbutton.style("color", "white");
@@ -138,6 +145,11 @@ function page5() {
 function goBack() {
   // let val = color(random(255),random(255),random(255));
   window.location='index.html';
+}
+
+function previous() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page3.html';
 }
 
 
