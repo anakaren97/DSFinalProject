@@ -3,10 +3,10 @@ var video;
 
 
 function setup() {
-  createCanvas(320,240);
+  createCanvas(1465, 800);
   video = createCapture(VIDEO);
-video.position(0,0);
-  video.size(320, 240);
+  video.position(0,0);
+  video.size(1000, 700);
 
   background(50);
 

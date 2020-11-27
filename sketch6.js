@@ -1,8 +1,7 @@
-var video;
-var drops = [];
+// var video;
 let button;
+var bubbles = [];
 
-var vScale = 26;
 let camera;
 let song;
 let r, g, b;
@@ -10,10 +9,12 @@ let mic, fft;
 let input;
 let analyzer;
 let rc, gc, bc;
+let value = 0;
+let circle_x, circle_y;
 
 
 function setup() {
-  createCanvas(1300, 700);
+  createCanvas(1465, 800);
   backbutton = createButton('Home');
   backbutton.position(400,  500);
   backbutton.mousePressed(goBack);
@@ -24,15 +25,15 @@ function setup() {
   r = random(255);
   g = random(255);
   b = random(255);
-
-
+  circle_x = 200;
+  circle_y = 200;
   //camera
-  pixelDensity(1);
-  video = createCapture(VIDEO);
-  video.size(width / vScale, height / vScale);
+  // pixelDensity(1);
+  // video = createCapture(VIDEO);
+  // video.size(width / vScale, height / vScale);
 
-   for (var i = 0; i < 500; i++) {
-    drops[i] = new Drop();
+  for (var i = 0; i < 50; i++) {
+    bubbles[i] = new Bubble(random(width), random(height));
   }
 
   button1 = createButton('Next');
@@ -43,7 +44,7 @@ function setup() {
   button1.style("padding", "40px 40px");
 
   button2 = createButton('Previous');
-  button2.position(100,  400);
+  button2.position(100,  500);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
@@ -57,111 +58,148 @@ function setup() {
   fft = new p5.FFT();
   fft.setInput(input);
 
-
+  background(0);
 
 }
 
 function draw() {
   background(0);
-  video.loadPixels();
+  // video.loadPixels();
   let rms = analyzer.getLevel();
   let spectrum = fft.analyze();
 
-
  // Get the overall volume (between 0 and 1.0)
-  let volume = input.getLevel();
-  let threshold = 0.05;
+ let threshold = 0.01;
+ let volume = input.getLevel();
 
-  if (volume > threshold) {
-  clear();
-  background(0);
+//   if (volume > threshold) {
+//   // clear();
+//   stroke(20);
+//   fill(255, 0, 0);
+//   // rect(random(40, width), random(height), volume * 500, volume * 500);
+//   rect(width/2, height/2, 200, 200);
+//
+// }
 
-  for (var z = 0; z < video.height; z++) {
-    for (var x = 0; x < video.width; x++) {
-      var index = (video.width - x + 1 + (z * video.width)) * 4;
-      var r = video.pixels[index + 0];
-      var g = video.pixels[index + 1];
-      var b = video.pixels[index + 2];
-      var bright = (r + g + b) / 3;
-      var w = map(bright, 0, 255, 0, vScale);
-      noStroke();
-      fill(r, g, b);
-      rectMode(CENTER);
-      rect(x * vScale, z * vScale, w, w);
-      }
-    }
+stroke(100);
+fill(255);
+circle(circle_x, circle_y, 40, 40);
+circle_x = circle_x + (mouseX - circle_x)/10;
+circle_y = circle_y + (mouseY - circle_y)/10;
 
-    stroke(255, 255, 0);
-    strokeWeight(25);
-    beginShape();
-      for (i = 0; i < spectrum.length; i++) {
-        point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-    }
-    endShape();
-  } else {
-    for (var i = 0; i < drops.length; i++) {
-    drops[i].fall();
-    drops[i].show();
-    }
-    strokeWeight(25);
-    stroke(255, 255, 0);
-    beginShape();
-      for (i = 0; i < spectrum.length; i++) {
-        point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-      }
-    endShape();
-
-    loadPixels();
-    for (var z = 0; z < video.height; z++) {
-    for (var x = 0; x < video.width; x++) {
-      var index = (video.width - x + 1 + (z * video.width)) * 4;
-      var r = video.pixels[index + 0];
-      var g = video.pixels[index + 1];
-      var b = video.pixels[index + 2];
-      var bright = (r + g + b) / 3;
-      var w = map(bright, 0, 255, 0, vScale);
-      noStroke();
-      fill(rc, g, bc);
-      rectMode(CENTER);
-      rect(x * vScale, z * vScale, w, w);
-      }
-    }
-  }
-
-}
-
-function Drop() {
-
-  this.x = random(width);
-  this.y = random(-500, -50);
-  this.z = random(0, 20);
-  this.len = map(this.z, 0, 20, 10, 20);
-  this.yspeed = map(this.z, 0, 20, 1, 20);
-
-
-  this.fall = function () {
-    this.y = this.y + this.yspeed;
-    var grav = map(this.z, 0, 20, 0, 0.2);
-    this.yspeed = this.yspeed + grav;
-
-    if (this.y > height) {
-      this.y = random(-200, -100);
-      this.yspeed = map(this.z, 0, 20, 4, 10);
-    }
-  }
-
-
-  this.show = function () {
-    var thick = map(this.z, 0, 20, 1, 3);
+  for (i = 0; i < spectrum.length; i++) {
     rc = random(255);
     gc = random(255);
     bc = random(100, 255);
     strokeWeight(10);
-    stroke(rc, gc, bc);
-    line(this.x, this.y, this.x, this.y + this.len);
-    // this.x--;
-    // this.y++;
+    stroke(rc, g, bc);
+    point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
+
+    }
+
+  for (var i = 0; i < bubbles.length; i++) {
+      bubbles[i].update();
+      bubbles[i].display();
+      bubbles[i].display2();
+      for (var j = 0; j < bubbles.length; j++) {
+        // to eliminate the loop detecting a circle
+        //detecting 'itself'...
+
+        if (i != j && bubbles[i].intersects(bubbles[j])) {
+                bubbles[i].changeColor();
+                bubbles[j].changeColor();
+          }
+
+      }
+    }
+
+    // for (var k = 0; k < bubbles.length; k++) {
+    //   bubbles[k].update();
+    //   bubbles[k].display2();
+    //   }
+    title();
+
+}
+
+function Bubble(tempX, tempY) {
+
+  this.x = tempX;
+  this.y = tempY;
+  this.r = 15;
+  this.col = color(255, 0);
+
+  this.display = function() {
+    rc = random(255);
+    gc = random(255);
+    bc = random(100, 255);
+    strokeWeight(10);
+    stroke(0, 255, 0);
+    fill(this.col);
+    ellipse(this.x, this.y, this.r * 2, this.r * 2);
   }
+
+  this.display2 = function() {
+    // background(color(random(255),random(255),random(255)));
+    let rms = analyzer.getLevel();
+    let spectrum = fft.analyze();
+    rc = random(255);
+    gc = random(255);
+    bc = random(100, 255);
+    strokeWeight(5);
+    stroke(r, g, b);
+    // fill(this.col, 100);
+    ellipse(this.x, this.y, map(spectrum[this.r], 255, 0, width/10, 20), map(spectrum[this.r] * 4, 255, 0, height/30, 20));
+
+    // for (i = 0; i < spectrum.length; i++) {
+    //     point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
+    // }
+  }
+
+  this.update = function() {
+    this.x = this.x + random(-5, 5);
+    this.y = this.y + random(-5, 5);
+
+  }
+
+  this.update2 = function() {
+    this.x = this.x + random(-100, 100);
+    this.y = this.y + random(-100, 100);
+
+  }
+
+  this.intersects = function(other) {
+    var d = dist(this.x, this.y, other.x, other.y);
+    if (d < this.r + other.r) {
+    return true;
+    } else {
+    return false;
+    }
+  }
+
+    this.changeColor = function() {
+      // stroke(2);
+      // this.r = 2;
+      // noFill();
+      // this.update2();
+      this.col = color(r, g, b, 0);
+      strokeWeight(0);
+      stroke(value);
+      // noStroke();
+    }
+
+}
+
+function title(){
+  
+  stroke(255);
+  strokeWeight(8);
+  fill(0);
+  textSize(52);
+  text('Shh...', 50, 300);
+  textSize(24);
+  text('Navigate through the sleeping aliens to enter the next realm', 50, 350);
+  textSize(24);
+  text('Do not make a sound to make sure not to wake them', 50, 400);
 }
 
 function page7() {

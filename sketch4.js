@@ -8,6 +8,10 @@ let capture = null;
 let tracker = null;
 let positions = null;
 let w = 0, h = 0;
+let playing = false;
+let fingers;
+let button;
+let vid;
 
 function setup() {
   w = windowWidth;
@@ -25,7 +29,7 @@ function setup() {
   button1.style("padding", "40px 40px");
 
   button2 = createButton('Previous');
-  button2.position(100,  400);
+  button2.position(100,  500);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
@@ -40,7 +44,12 @@ function setup() {
 
   frameRate(10);
   colorMode(HSB);
-  background(0);
+
+  // vid = createVideo(['video/Page4_new.mov']);
+  // vid.elt.muted = true;
+  // vid.loop();
+  // vid.hide();
+  background(color(random(255),random(255),random(255)));
 
   tracker = new clm.tracker();
   tracker.init();
@@ -48,11 +57,14 @@ function setup() {
 }
 
 function draw() {
+  // fingers.loop();
+  title();
   // Flip the canvas so that we get a mirror image
+  strokeWeight(1);
 	translate(w, 0);
   scale(-1.0, 1.0);
   // Uncomment the line below to see the webcam image (and no trail)
-  //image(capture, 0, 0, w, h);
+  // image(capture, 0, 0, w, h);
   positions = tracker.getCurrentPosition();
 
   if (positions.length > 0) {
@@ -76,6 +88,21 @@ function draw() {
     drawEye(eye1, irisColor);
 		drawEye(eye2, irisColor);
   }
+
+}
+
+function title(){
+  stroke(0);
+  strokeWeight(8);
+  fill(255);
+  textSize(54);
+  text('Look Around...', 50, 250);
+  textSize(24);
+  text('Navigate the maze with your eyes', 50, 350);
+  textSize(24);
+  text('Be careful and try not to get lost', 50, 400);
+  textSize(14);
+  text('Press a key to start drawing again', 50, 450);
 }
 
 function getPoint(index) {
@@ -118,12 +145,13 @@ function drawEyeOutline(eye) {
 
 function keyPressed() {
   // Clear background
-  background(0);
+  background(color(random(255),random(255),random(255)));
+
 }
 
 function mouseClicked() {
-  const timestamp = timestampString();
-  saveCanvas("eyeTrail-" + timestamp, "png");
+  // const timestamp = timestampString();
+  // saveCanvas("eyeTrail-" + timestamp, "png");
 }
 
 function timestampString() {
@@ -134,7 +162,7 @@ function windowResized() {
   w = windowWidth;
   h = windowHeight;
   resizeCanvas(w, h);
-  background(0);
+  background(color(random(255),random(255),random(255)));
 }
 
 function page5() {
