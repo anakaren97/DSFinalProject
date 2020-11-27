@@ -7,6 +7,27 @@ function setup() {
   cam = createCapture(VIDEO);
   cam.size(20, 20);
 
+  button1 = createButton('Next');
+  button1.position(1100,  600);
+  button1.mousePressed(page8);
+  button1.style("color", "white");
+  button1.style("background-color", "black");
+  button1.style("padding", "40px 40px");
+
+  button2 = createButton('Back');
+  button2.position(100,  600);
+  button2.mousePressed(previous);
+  button2.style("color", "white");
+  button2.style("background-color", "black");
+  button2.style("padding", "40px 40px");
+
+  backbutton = createButton('Home');
+  backbutton.position(630,  625);
+  backbutton.mousePressed(goBack);
+  backbutton.style("color", "white");
+  backbutton.style("background-color", "black");
+  backbutton.style("padding", "20px 40px");
+
 }
 
 function draw() {
@@ -157,4 +178,19 @@ pointLight(250, 250, 200, locX, locY, 10);
   pop();
 
 
+}
+
+function page8() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page8.html';
+}
+
+function goBack() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='index.html';
+}
+
+function previous() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page6.html';
 }

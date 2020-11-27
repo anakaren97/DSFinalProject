@@ -15,13 +15,6 @@ let circle_x, circle_y;
 
 function setup() {
   createCanvas(1465, 800);
-  backbutton = createButton('Home');
-  backbutton.position(400,  500);
-  backbutton.mousePressed(goBack);
-  backbutton.style("color", "white");
-  backbutton.style("background-color", "black");
-  backbutton.style("padding", "20px 40px");
-
   r = random(255);
   g = random(255);
   b = random(255);
@@ -37,18 +30,25 @@ function setup() {
   }
 
   button1 = createButton('Next');
-  button1.position(1000,  400);
+  button1.position(1100,  600);
   button1.mousePressed(page7);
   button1.style("color", "white");
   button1.style("background-color", "black");
   button1.style("padding", "40px 40px");
 
-  button2 = createButton('Previous');
-  button2.position(100,  500);
+  button2 = createButton('Back');
+  button2.position(100,  600);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
   button2.style("padding", "40px 40px");
+
+  backbutton = createButton('Home');
+  backbutton.position(630,  625);
+  backbutton.mousePressed(goBack);
+  backbutton.style("color", "white");
+  backbutton.style("background-color", "black");
+  backbutton.style("padding", "20px 40px");
 
   //audio
   // Create an Audio input
@@ -190,7 +190,7 @@ function Bubble(tempX, tempY) {
 }
 
 function title(){
-  
+
   stroke(255);
   strokeWeight(8);
   fill(0);
@@ -204,7 +204,7 @@ function title(){
 
 function page7() {
   // let val = color(random(255),random(255),random(255));
-  window.location='page8.html';
+  window.location='page7.html';
 }
 
 function goBack() {

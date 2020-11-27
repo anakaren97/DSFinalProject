@@ -22,21 +22,21 @@ function setup() {
   capture.hide();
 
   button1 = createButton('Next');
-  button1.position(1000,  400);
+  button1.position(1100,  600);
   button1.mousePressed(page5);
   button1.style("color", "white");
   button1.style("background-color", "black");
   button1.style("padding", "40px 40px");
 
-  button2 = createButton('Previous');
-  button2.position(100,  500);
+  button2 = createButton('Back');
+  button2.position(100,  600);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
   button2.style("padding", "40px 40px");
 
   backbutton = createButton('Home');
-  backbutton.position(400,  500);
+  backbutton.position(630,  625);
   backbutton.mousePressed(goBack);
   backbutton.style("color", "white");
   backbutton.style("background-color", "black");

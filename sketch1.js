@@ -7,7 +7,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   //video for stars
   button1 = createButton('Next');
-  button1.position(1000,  400);
+  button1.position(1200,  350);
   button1.mousePressed(page3);
   button1.style("color", "white");
   button1.style("background-color", "black");

@@ -10,10 +10,27 @@ canvas {
 
 #myVideo1 {
   position: fixed;
-  right: -20;
-  left: 50;
-  bottom: 50;
-  width: 1765px;
-  height: 900px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 1325px;
+  height: 750px;
+  opacity: 60%;
+}
+
+#myVideo2 {
+  position: fixed;
+  right: -1;
+  left: -3;
+  bottom: 2;
+  width: 1365px;
+  height: 750px;
   opacity: 30%;
+}
+
+#PhotoBooth {
+  position: fixed;
+  width: 0px;
+  height: 90px;
+  opacity: 10%;
 }
