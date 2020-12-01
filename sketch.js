@@ -1,11 +1,16 @@
 let button;
 let bg;
+let vid;
 let angle = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   cam = createCapture(VIDEO);
   cam.size(20, 20);
+  vid = createVideo(['video/glitch.mp4']);
+  vid.elt.muted = true;
+  vid.loop();
+
   //bg = loadImage('https://i.ytimg.com/vi/41vuqCTd2-U/maxresdefault.jpg');
 
   button1 = createButton('Start');
@@ -20,7 +25,7 @@ function setup() {
 }
 
 function draw(){
-  background(0);
+  background(vid);
 
   angle += 0.02;
   noStroke();
