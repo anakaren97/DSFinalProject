@@ -1,7 +1,13 @@
 const objects = [];
 let eyeZ;
 let vid;
+let vidline;
+let van;
 
+function preload() {
+  // Load model with normalise parameter set to true
+  van = loadModel('assets/VolksvagenVan.obj', true);
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -14,9 +20,13 @@ function setup() {
   button1.style("padding", "40px 40px");
 
  vid = createVideo(['video/star.mp4']);
+ vidline = createVideo(['video/line.mp4']);
  vid.elt.muted = true;
+ vidline.elt.muted = true;
  vid.loop();
- vid.hide();
+ vidline.hide();
+ vidline.loop();
+ vidline.hide();
 
   eyeZ = height / 2 / tan((30 * PI) / 180); // The default distance the camera is away from the origin.
 
@@ -40,6 +50,7 @@ function draw() {
   pointLight(255, 255, 255, 0, 0, 400);
   ambientLight(244, 122, 158);
 
+
   // Left wall
   push();
   texture(vid);
@@ -59,18 +70,23 @@ function draw() {
   // Bottom wall
   push();
   translate(0, 100, 200);
+  emissiveMaterial(50,23,77);
   rotateX((90 * PI) / 180);
   plane(width, height);
   pop();
 
   // Top wall
   push();
+  texture(vid);
   translate(0, -100, 200);
   rotateX((90 * PI) / 180);
   plane(width, height);
   pop();
-  ellipse(200,200,200);
+
+ push();
+ texture(vidline);
   plane(200, 200); // Back wall
+  pop();
 
   const x = mouseX - width / 2;
   const y = mouseY - height / 2;
@@ -92,6 +108,16 @@ function draw() {
     }
   }
 
+  //van
+  push();
+  translate(0,0,100);
+  //fill(237, 34, 93);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  scale(0.6);
+  normalMaterial();
+  model(van);
+  pop();
   // Cursor
   push();
   translate(intersect);
