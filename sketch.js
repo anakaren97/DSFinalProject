@@ -1,15 +1,14 @@
 let button;
 let bg;
-let vid;
 let angle = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
-  cam = createCapture(VIDEO);
-  cam.size(20, 20);
-  vid = createVideo(['video/glitch.mp4']);
-  vid.elt.muted = true;
-  vid.loop();
+  createCanvas(windowWidth, windowHeight);
+  //  cam = createCapture(VIDEO);
+  //  cam.size(20, 20);
+  //  vid = createVideo(['video/glitch.mp4']);
+  //  vid.elt.muted = true;
+  //  vid.loop();
 
   //bg = loadImage('https://i.ytimg.com/vi/41vuqCTd2-U/maxresdefault.jpg');
 
@@ -25,16 +24,17 @@ function setup() {
 }
 
 function draw(){
-  background(vid);
+  fill(0,250,0);
+rect(100,100,100,100);
 
-  angle += 0.02;
-  noStroke();
+
+//  angle += 0.02;
+//  noStroke();
   //botton 4
-  push();
-  translate(100, height/8);
-  texture(cam);
-  plane(500);
-  pop();
+//  push();
+//  translate(100, height/2);
+//  texture(vid);
+//  pop();
 
 
 }
