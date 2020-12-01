@@ -105,9 +105,9 @@ circle_y = circle_y + (mouseY - circle_y)/10;
         // to eliminate the loop detecting a circle
         //detecting 'itself'...
 
-        if (i != j && bubbles[i].intersects(bubbles[j])) {
+        if (i != j && bubbles[i].intersects(mouseX && mouseY)) {
                 bubbles[i].changeColor();
-                bubbles[j].changeColor();
+                bubbles[i].changeColor();
           }
 
       }
@@ -148,11 +148,8 @@ function Bubble(tempX, tempY) {
     strokeWeight(5);
     stroke(r, g, b);
     // fill(this.col, 100);
-    ellipse(this.x, this.y, map(spectrum[this.r], 255, 0, width/10, 20), map(spectrum[this.r] * 4, 255, 0, height/30, 20));
+    ellipse(this.x, this.y, map(spectrum[this.r] * 2, 0, 255, width/10, 20), map(spectrum[this.r], 0, 255, height/30, 20));
 
-    // for (i = 0; i < spectrum.length; i++) {
-    //     point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-    // }
   }
 
   this.update = function() {
@@ -181,7 +178,7 @@ function Bubble(tempX, tempY) {
       // this.r = 2;
       // noFill();
       // this.update2();
-      this.col = color(r, g, b, 0);
+      this.col = color(r, g, b);
       strokeWeight(0);
       stroke(value);
       // noStroke();

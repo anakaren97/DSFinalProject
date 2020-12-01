@@ -37,7 +37,9 @@ canvas {
 }
 #PhotoBooth {
   position: fixed;
-  width: 0px;
-  height: 90px;
-  opacity: 10%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+ 
+  opacity: 60%;
 }

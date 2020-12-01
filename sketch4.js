@@ -49,7 +49,6 @@ function setup() {
   // vid.elt.muted = true;
   // vid.loop();
   // vid.hide();
-  background(color(random(255),random(255),random(255)));
 
   tracker = new clm.tracker();
   tracker.init();
@@ -57,6 +56,8 @@ function setup() {
 }
 
 function draw() {
+  background(255, 255, 0);
+
   // fingers.loop();
   title();
   // Flip the canvas so that we get a mirror image
@@ -145,7 +146,7 @@ function drawEyeOutline(eye) {
 
 function keyPressed() {
   // Clear background
-  background(color(random(255),random(255),random(255)));
+  background(0, 255, 0);
 
 }
 
@@ -162,7 +163,7 @@ function windowResized() {
   w = windowWidth;
   h = windowHeight;
   resizeCanvas(w, h);
-  background(color(random(255),random(255),random(255)));
+  background(0, 255, 0);
 }
 
 function page5() {
