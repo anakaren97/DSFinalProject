@@ -115,7 +115,7 @@ function goBack() {
 
 function previous() {
   // let val = color(random(255),random(255),random(255));
-  window.location='page7.html';
+  window.location='page8.html';
 }
 
 function takePhoto(){
