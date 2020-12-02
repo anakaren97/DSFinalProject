@@ -1,10 +1,15 @@
 let button;
 let myFont;
+var video;
 
 function preload() {  myFont = loadFont('assets/hacked.ttf');}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  //background video
+  video = createVideo("video/glitch.mp4");
+ video.size(windowWidth, windowHeight);
+ video.loop();
 
 //Welcome text
  fill(43,30,174);
@@ -12,7 +17,7 @@ function setup() {
  textSize(36);
 text('Welcome', width/2.5, height/3);
  loadImage('assets/rect.png', img => {
-   image(img, width/4, height/6);
+   image(img, width/4, 50);
  });
 //start button
   button1 = createButton('Start');

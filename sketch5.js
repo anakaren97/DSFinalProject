@@ -8,7 +8,6 @@ var vScale = 15;
 let back = 51;
 let fillColor = 0;
 
-var vScale = 16;
 let camera;
 function setup() {
   createCanvas(windowWidth, windowHeight);
