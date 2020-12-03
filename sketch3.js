@@ -10,10 +10,10 @@ function setup() {
   r = random(255);
   g = random(255);
   b = random(255);
-  circle_x = 100;
-  circle_y = 500;
-  circle_size_x = 100;
-  circle_size_y = 50;
+  circle_x = 750;
+  circle_y = 700;
+  circle_size_x = 150;
+  circle_size_y = 100;
 
   button1 = createButton('Next');
   button1.position(1200,  630);
@@ -44,27 +44,27 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 0, 10);
+  background(255, 255, 0, 2);
     // title();
 
     // noStroke();
     // fill(255);
 
     //FOR IMAGE BECAUSE DOES NOT LOAD IF NOT HOSTED
-    image(img, circle_x, circle_y, circle_size_x, circle_size_y);
+    // image(img, circle_x, circle_y, circle_size_x, circle_size_y);
 
     // TEST OBJECT
-    // ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
+    ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
     // circle_x = circle_x + (mouseX - circle_x)/3;
     // circle_y = circle_y + (mouseY - circle_y)/3;
 
     if(mouseIsPressed){
-    // circle_x += 1;
-    circle_x += 10;
+    circle_y -= 9;
+    // circle_x += 9;
     circle_size_x -= 1;
-    circle_size_y += 1;
+    circle_size_y -= 3;
 
-      if(circle_x > windowWidth){
+      if(circle_y < 0){
         window.location='page4.html';
       }
     }

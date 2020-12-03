@@ -87,10 +87,10 @@ function draw() {
   endShape();
   }
     if (rms < threshold){
-    circle_x += 7;
+    circle_x += 8;
   }
 
-  if(circle_x > widthofCanvas){
+  if(circle_x > windowWidth){
     window.location='page9.html';
   }
 

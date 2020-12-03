@@ -14,45 +14,41 @@ let c;
 
 
 function setup() {
-  createCanvas(1500, 900);
-  img = loadImage('video/photobooth_new_new.png'); // Load the image
-
+  createCanvas(1450, 900);
+  // img = loadImage('assets/photobooth_new_new.png'); // Load the image
   webCamFeed = createCapture(VIDEO);
-  webCamFeed.size(500,00);
-  webCamFeed.position(450,475);
-  webCamFeed.hide();
 
   Shutter = createButton('Take a Photo');
-  Shutter.style('background-color', 'green')
-  Shutter.position(450,475);
-  Shutter.size(90,30);
+  Shutter.style('background-color', 'pink')
+  Shutter.position(500,450);
+  Shutter.size(90,40);
   Shutter.mousePressed(takePhoto);
 
   backbutton = createButton('Restart');
-  backbutton.position(1200,  60);
+  backbutton.position(1290,  60);
   backbutton.mousePressed(goBack);
   backbutton.style("color", "white");
   backbutton.style("background-color", "black");
   backbutton.style("padding", "20px 40px");
 
   buttonFXInvert = createButton('Invert');
-  buttonFXInvert.position(300, 520);
+  buttonFXInvert.position(350, 520);
   buttonFXInvert.size(85,30);
   buttonFXInvert.mousePressed(FXInvert);
 
   buttonFXPosterize = createButton('Posterize');
-  buttonFXPosterize.position(405, 520);
+  buttonFXPosterize.position(455, 520);
   buttonFXPosterize.size(85,30);
   buttonFXPosterize.mousePressed(FXPosterize);
 
   buttonFXPorklife = createButton('Blur');
-  buttonFXPorklife.position(510, 520);
+  buttonFXPorklife.position(560, 520);
   buttonFXPorklife.size(85,30);
   buttonFXPorklife.mousePressed(FXPorklife);
 
   var c = color(85);
   buttonReset = createButton('Reset');
-  buttonReset.position(625, 520);
+  buttonReset.position(660, 520);
   buttonReset.size(85,30);
   buttonReset.style('background-color', c);
   c = color(255);
@@ -60,19 +56,17 @@ function setup() {
   buttonReset.mousePressed(reset);
 
   sliderExp = createSlider(-50, 50, 0, 5);
-  sliderExp.position(300, 570);
+  sliderExp.position(350, 570);
   sliderExp.style("color", "black");
   sliderExp.size(400, 30);
-  // image(img, 0, -50, 1200, 800);
 
 }
 
 
 function draw() {
-  image(webCamFeed, 230, 135, 550, 480);
-  background(77, 7, 120);
-  ///To be uncommented when hosted ////
-  /////////////////////////////////////
+  background(255);
+  // image(img, 0, -50, 1450, 900);
+  image(webCamFeed, 257, 103, 620, 535);
 
   if (FXInvertState == -1){
     filter(INVERT);
