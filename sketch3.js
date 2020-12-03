@@ -4,16 +4,14 @@ let img;
 let vid;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1500, 900);
   img = loadImage('video/bus.png'); // Load the image
-  vid = createVideo('video/Page3_new.mp4');
-  vid.play();
 
   r = random(255);
   g = random(255);
   b = random(255);
-  circle_x = width/2;
-  circle_y = height/2;
+  circle_x = 100;
+  circle_y = 500;
   circle_size_x = 100;
   circle_size_y = 50;
 
@@ -38,49 +36,53 @@ function setup() {
   backbutton.style("background-color", "black");
   backbutton.style("padding", "20px 40px");
 
+  // vid = createVideo('video/Page3_new.mp4');
+  // vid.elt.muted = true;
+  // vid.loop();
+  // vid.position(0, 0);
+  // vid.size(1600, 900);
 }
 
 function draw() {
-  background(255, 255, 0, 60);
-    title();
-    vid.position(0, 0);
-    vid.size(windowWidth, windowHeight);
-    noStroke();
-    fill(0);
+  background(255, 255, 0, 10);
+    // title();
+
+    // noStroke();
+    // fill(255);
 
     //FOR IMAGE BECAUSE DOES NOT LOAD IF NOT HOSTED
-    // image(img, circle_x, circle_y, circle_size_x, circle_size_y);
+    image(img, circle_x, circle_y, circle_size_x, circle_size_y);
 
     // TEST OBJECT
-    ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
+    // ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
     // circle_x = circle_x + (mouseX - circle_x)/3;
     // circle_y = circle_y + (mouseY - circle_y)/3;
 
     if(mouseIsPressed){
     // circle_x += 1;
-    circle_y -= 1;
+    circle_x += 10;
     circle_size_x -= 1;
     circle_size_y += 1;
 
-      if(circle_size_y > 600){
+      if(circle_x > windowWidth){
         window.location='page4.html';
       }
     }
   }
 
-function title(){
-  stroke(255, 0, 0);
-  fill(0);
-  rect(30, 50, 600, 150)
-  stroke(255);
-  strokeWeight(8);
-  fill(0);
-  textSize(34);
-  text('Travel with the bus to the next realm', 50, 100);
-  textSize(24);
-  text('Hold an press the mouse to start moving', 50, 150);
-
-}
+// function title(){
+//   stroke(255, 0, 0);
+//   fill(0);
+//   rect(30, 50, 600, 150)
+//   stroke(255);
+//   strokeWeight(8);
+//   fill(0);
+//   textSize(34);
+//   text('Travel with the bus to the next realm', 50, 100);
+//   textSize(24);
+//   text('Hold an press the mouse to start moving', 50, 150);
+//
+// }
 
 function goBack() {
   // let val = color(random(255),random(255),random(255));

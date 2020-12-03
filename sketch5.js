@@ -16,6 +16,7 @@ function preload() {
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  //background(color(random(255),random(255),random(255)));
 
   r = random(255);
   g = random(255);

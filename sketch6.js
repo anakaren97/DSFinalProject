@@ -14,7 +14,7 @@ let img;
 let dingdong;
 
 function setup() {
-  createCanvas(1400, 800);
+  createCanvas(1500, 900);
   img = loadImage('video/bus.png'); // Load the image
   soundFormats('mp3', 'ogg');
   dingdong = loadSound('assets/sound.mp3');
@@ -32,7 +32,7 @@ function setup() {
   circle_x = 200;
   circle_y = 200;
 
-  for (var i = 0; i < 35; i++) {
+  for (var i = 0; i < 20; i++) {
     bubbles[i] = new Bubble(random(width), random(height));
   }
 
@@ -60,7 +60,7 @@ function setup() {
 
 function draw() {
   background(0);
-  title();
+  // title();
 
   let rms = analyzer.getLevel();
   let spectrum = fft.analyze();
@@ -95,17 +95,17 @@ function draw() {
          }
        }
      }
-    title();
+    // title();
 
   //TO BE COMMENTED WHEN HOSTED////
-    stroke(100);
-    fill(0, 255, 0);
-    ellipse(mouseX, mouseY, 40, 40);
+    // stroke(100);
+    // fill(0, 255, 0);
+    // ellipse(mouseX, mouseY, 40, 40);
   ////////////////////////////////////
 
   ///TO BE UNCOMMENTED WHEN HOSTED//////
-    // image(img, mouseX - 50, mouseY - 50, 150, 100);
-    // noCursor();
+    image(img, mouseX - 50, mouseY - 50, 150, 100);
+    noCursor();
   /////////////////////////////////////
 
 }
@@ -155,21 +155,21 @@ function Bubble(tempX, tempY) {
     }
 }
 
-function title(){
-  stroke(255, 0, 0)
-  fill(0);
-  rect(30, 50, 650, 170)
-  stroke(255);
-  strokeWeight(8);
-  fill(0);
-  textSize(34);
-  text('Watch Out!', 50, 100);
-  textSize(18);
-  text('Navigate through the spaceships by speaking loud to make them small', 50, 150);
-  textSize(18);
-  text('...make sure not to touch them so you avoid angering the ships', 50, 175);
-
-}
+// function title(){
+//   stroke(255, 0, 0)
+//   fill(0);
+//   rect(30, 50, 650, 170)
+//   stroke(255);
+//   strokeWeight(8);
+//   fill(0);
+//   textSize(34);
+//   text('Watch Out!', 50, 100);
+//   textSize(18);
+//   text('Navigate through the spaceships by speaking loud to make them small', 50, 150);
+//   textSize(18);
+//   text('...make sure not to touch them so you avoid angering the ships', 50, 175);
+//
+// }
 
 function page7() {
   // let val = color(random(255),random(255),random(255));

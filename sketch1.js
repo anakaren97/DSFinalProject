@@ -165,5 +165,5 @@ function goBack() {
 
 function previous() {
   // let val = color(random(255),random(255),random(255));
-  window.location='page1.html';
+  window.location='index.html';
 }

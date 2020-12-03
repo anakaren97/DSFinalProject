@@ -6,11 +6,12 @@ let rc, gc, bc;
 let img;
 let circle_x, circle_y, circle_size_x, circle_size_y;
 let threshold;
-
+let widthofCanvas;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  // img = loadImage('video/bus.png'); // Load the image
+  widthofCanvas = 1800;
+  createCanvas(widthofCanvas, 900);
+  img = loadImage('video/bus.png'); // Load the image
   r = random(255);
   g = random(255);
   b = random(255);
@@ -57,36 +58,41 @@ function setup() {
 
 function draw() {
   background(0);
-  title();
+  // title();
 
   ///TO BE COMMENTED OUT/////
-  fill(255);
-  noStroke();
-  ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
+  // fill(255, 0, 0);
+  // noStroke();
+  // ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
   /////////////////////////////////////////////////////////////////
 
   /////TO BE COMMENTED FOR BUS/////
-  // image(img, circle_x, circle_y, circle_size_x, circle_size_y);
+  image(img, circle_x, circle_y, circle_size_x, circle_size_y);
 //////////////////////////////////////////////////////////////////////
 
   // Get the average (root mean square) amplitude
   let rms = analyzer.getLevel();
   print('value: ' + rms);
+  print('circle_x Value: ' + circle_x);
 
   fill(r, g, b, 0);
   stroke(255, 0, 0);
-
+  strokeWeight(20);
 
   let spectrum = fft.analyze();
 
   beginShape();
   for (i = 0; i < spectrum.length; i++) {
-   point(i, map(spectrum[i], 0, 255, height, 0));
+   point(i*10, map(spectrum[i]* 2, 0, 255, height, 0));
   endShape();
   }
     if (rms < threshold){
-    circle_x += 2;
-    }
+    circle_x += 7;
+  }
+
+  if(circle_x > widthofCanvas){
+    window.location='page9.html';
+  }
 
 }
 

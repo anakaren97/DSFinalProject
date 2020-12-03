@@ -3,7 +3,7 @@ var theta = 0; // must be 0
 var offset = 0.01;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(1500, 900, WEBGL);
   cam = createCapture(VIDEO);
   cam.size(20, 20);
 

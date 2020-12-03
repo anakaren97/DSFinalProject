@@ -14,8 +14,8 @@ let c;
 
 
 function setup() {
-  createCanvas(1300, 800);
-  img = loadImage('video/photobooth.png'); // Load the image
+  createCanvas(1500, 900);
+  img = loadImage('video/photobooth_new_new.png'); // Load the image
 
   webCamFeed = createCapture(VIDEO);
   webCamFeed.size(500,00);
@@ -63,17 +63,16 @@ function setup() {
   sliderExp.position(300, 570);
   sliderExp.style("color", "black");
   sliderExp.size(400, 30);
+  // image(img, 0, -50, 1200, 800);
 
 }
 
 
 function draw() {
-  background(255);
-  ///To be uncommented when hosted ////
-  // image(img, 0, 0, 1300, 800);
-  /////////////////////////////////////
-
   image(webCamFeed, 230, 135, 550, 480);
+  background(77, 7, 120);
+  ///To be uncommented when hosted ////
+  /////////////////////////////////////
 
   if (FXInvertState == -1){
     filter(INVERT);
