@@ -59,6 +59,7 @@ function setup() {
 
 function draw() {
   background(0);
+  orbitControl();
 
   // Lights
   pointLight(255, 255, 255, 0, 0, 400);
