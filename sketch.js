@@ -33,7 +33,7 @@ text('Welcome', width/2.5, height/3);
 }
 
 function draw(){
-
+background(0);
 
   let s = 'We can all agree this year has been a ride we all deserve a little break so why not join us on a trip that is out of this world with the Magic Van. Think of the Magic Van as a one stop gateway from the taxing day to day life of this global pandemic. When you are ready to start your journey you can press start below!';
   fill(195,159,192);
