@@ -18,8 +18,8 @@ function setup() {
 
   circle_x = 100;
   circle_y = height/2;
-  circle_size_x = 100;
-  circle_size_y = 50;
+  circle_size_x = 150;
+  circle_size_y = 100;
 
   threshold = 0.1;
 
@@ -96,17 +96,17 @@ function draw() {
 
 }
 
-function title(){
-  fill(0);
-  rect(30, 50, 650, 170)
-  stroke(255);
-  strokeWeight(8);
-  fill(0);
-  textSize(34);
-  text('Speak Up...', 50, 100);
-  textSize(18);
-  text('Talk as loud as you can to make it through this last stretch on you journey', 50, 150);
-}
+// function title(){
+//   fill(0);
+//   rect(30, 50, 650, 170)
+//   stroke(255);
+//   strokeWeight(8);
+//   fill(0);
+//   textSize(34);
+//   text('Speak Up...', 50, 100);
+//   textSize(18);
+//   text('Talk as loud as you can to make it through this last stretch on you journey', 50, 150);
+// }
 
 
 function page9() {
