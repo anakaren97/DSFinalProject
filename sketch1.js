@@ -38,7 +38,7 @@ function setup() {
  vid.elt.muted = true;
  vidline.elt.muted = true;
  vid.loop();
- vidline.hide();
+ vid.hide();
  vidline.loop();
  vidline.hide();
 
