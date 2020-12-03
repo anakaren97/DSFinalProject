@@ -13,11 +13,25 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   //video for stars
   button1 = createButton('Next');
-  button1.position(1200,  350);
+  button1.position(1200,  630);
   button1.mousePressed(page3);
   button1.style("color", "white");
   button1.style("background-color", "black");
-  button1.style("padding", "40px 40px");
+  button1.style("padding", "20px 40px");
+
+  button2 = createButton('Back');
+  button2.position(80,  630);
+  button2.mousePressed(previous);
+  button2.style("color", "white");
+  button2.style("background-color", "black");
+  button2.style("padding", "20px 40px");
+
+  backbutton = createButton('Restart');
+  backbutton.position(1200,  60);
+  backbutton.mousePressed(goBack);
+  backbutton.style("color", "white");
+  backbutton.style("background-color", "black");
+  backbutton.style("padding", "20px 40px");
 
  vid = createVideo(['video/star.mp4']);
  vidline = createVideo(['video/line.mp4']);
@@ -141,4 +155,14 @@ class IntersectPlane {
 
 function page3() {
   window.location='page3.html';
+}
+
+function goBack() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='index.html';
+}
+
+function previous() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='page1.html';
 }

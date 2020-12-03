@@ -10,46 +10,14 @@ let input;
 let analyzer;
 let rc, gc, bc;
 let value = 0;
-let circle_x, circle_y;
-
+let img;
+let dingdong;
 
 function setup() {
-  createCanvas(1465, 800);
-  r = random(255);
-  g = random(255);
-  b = random(255);
-  circle_x = 200;
-  circle_y = 200;
-  //camera
-  // pixelDensity(1);
-  // video = createCapture(VIDEO);
-  // video.size(width / vScale, height / vScale);
-
-  for (var i = 0; i < 50; i++) {
-    bubbles[i] = new Bubble(random(width), random(height));
-  }
-
-  button1 = createButton('Next');
-  button1.position(1100,  600);
-  button1.mousePressed(page7);
-  button1.style("color", "white");
-  button1.style("background-color", "black");
-  button1.style("padding", "40px 40px");
-
-  button2 = createButton('Back');
-  button2.position(100,  600);
-  button2.mousePressed(previous);
-  button2.style("color", "white");
-  button2.style("background-color", "black");
-  button2.style("padding", "40px 40px");
-
-  backbutton = createButton('Home');
-  backbutton.position(630,  625);
-  backbutton.mousePressed(goBack);
-  backbutton.style("color", "white");
-  backbutton.style("background-color", "black");
-  backbutton.style("padding", "20px 40px");
-
+  createCanvas(1400, 800);
+  img = loadImage('video/bus.png'); // Load the image
+  soundFormats('mp3', 'ogg');
+  dingdong = loadSound('assets/sound.mp3');
   //audio
   // Create an Audio input
   input = new p5.AudioIn();
@@ -58,13 +26,42 @@ function setup() {
   fft = new p5.FFT();
   fft.setInput(input);
 
-  background(0);
+  r = random(255);
+  g = random(255);
+  b = random(255);
+  circle_x = 200;
+  circle_y = 200;
 
+  for (var i = 0; i < 35; i++) {
+    bubbles[i] = new Bubble(random(width), random(height));
+  }
+
+  button1 = createButton('Next');
+  button1.position(1200,  630);
+  button1.mousePressed(page7);
+  button1.style("color", "white");
+  button1.style("background-color", "black");
+  button1.style("padding", "20px 40px");
+
+  button2 = createButton('Back');
+  button2.position(80,  630);
+  button2.mousePressed(previous);
+  button2.style("color", "white");
+  button2.style("background-color", "black");
+  button2.style("padding", "20px 40px");
+
+  backbutton = createButton('Restart');
+  backbutton.position(1200,  60);
+  backbutton.mousePressed(goBack);
+  backbutton.style("color", "white");
+  backbutton.style("background-color", "black");
+  backbutton.style("padding", "20px 40px");
 }
 
 function draw() {
   background(0);
-  // video.loadPixels();
+  title();
+
   let rms = analyzer.getLevel();
   let spectrum = fft.analyze();
 
@@ -72,20 +69,6 @@ function draw() {
  let threshold = 0.01;
  let volume = input.getLevel();
 
-//   if (volume > threshold) {
-//   // clear();
-//   stroke(20);
-//   fill(255, 0, 0);
-//   // rect(random(40, width), random(height), volume * 500, volume * 500);
-//   rect(width/2, height/2, 200, 200);
-//
-// }
-
-stroke(100);
-fill(255);
-circle(circle_x, circle_y, 40, 40);
-circle_x = circle_x + (mouseX - circle_x)/10;
-circle_y = circle_y + (mouseY - circle_y)/10;
 
   for (i = 0; i < spectrum.length; i++) {
     rc = random(255);
@@ -97,27 +80,33 @@ circle_y = circle_y + (mouseY - circle_y)/10;
 
     }
 
-  for (var i = 0; i < bubbles.length; i++) {
-      bubbles[i].update();
-      bubbles[i].display();
-      bubbles[i].display2();
-      for (var j = 0; j < bubbles.length; j++) {
-        // to eliminate the loop detecting a circle
-        //detecting 'itself'...
-
-        if (i != j && bubbles[i].intersects(mouseX && mouseY)) {
-                bubbles[i].changeColor();
-                bubbles[i].changeColor();
-          }
-
-      }
-    }
-
-    // for (var k = 0; k < bubbles.length; k++) {
-    //   bubbles[k].update();
-    //   bubbles[k].display2();
-    //   }
+    for (var i = 0; i < bubbles.length; i++) {
+       bubbles[i].update();
+       bubbles[i].display();
+       bubbles[i].display2();
+       for (var j = 0; j < bubbles.length; j++) {
+         if (i != j && bubbles[i].intersects(bubbles[j])) {
+           bubbles[i].changeColor();
+           ///TO BE UNCOMMENTED WHEN HOSTED//////
+           // dingdong.play();
+         } else {
+           ///TO BE UNCOMMENTED WHEN HOSTED//////
+           // dingdong.pause();
+         }
+       }
+     }
     title();
+
+  //TO BE COMMENTED WHEN HOSTED////
+    stroke(100);
+    fill(0, 255, 0);
+    ellipse(mouseX, mouseY, 40, 40);
+  ////////////////////////////////////
+
+  ///TO BE UNCOMMENTED WHEN HOSTED//////
+    // image(img, mouseX - 50, mouseY - 50, 150, 100);
+    // noCursor();
+  /////////////////////////////////////
 
 }
 
@@ -129,43 +118,29 @@ function Bubble(tempX, tempY) {
   this.col = color(255, 0);
 
   this.display = function() {
-    rc = random(255);
-    gc = random(255);
-    bc = random(100, 255);
-    strokeWeight(10);
-    stroke(0, 255, 0);
-    fill(this.col);
-    ellipse(this.x, this.y, this.r * 2, this.r * 2);
-  }
+      stroke(255);
+      fill(this.col, 100);
+      ellipse(this.x, this.y, this.r * 2, this.r * 2);
+    }
 
   this.display2 = function() {
-    // background(color(random(255),random(255),random(255)));
     let rms = analyzer.getLevel();
     let spectrum = fft.analyze();
     rc = random(255);
     gc = random(255);
     bc = random(100, 255);
-    strokeWeight(5);
-    stroke(r, g, b);
-    // fill(this.col, 100);
-    ellipse(this.x, this.y, map(spectrum[this.r] * 2, 0, 255, width/10, 20), map(spectrum[this.r], 0, 255, height/30, 20));
-
-  }
+    strokeWeight(6);
+    stroke(255);
+    ellipse(this.x, this.y, map(spectrum[this.r] * 2, 0, 255, width/10, 10), map(spectrum[this.r], 0, 255, height/50, 10));
+}
 
   this.update = function() {
     this.x = this.x + random(-5, 5);
     this.y = this.y + random(-5, 5);
-
-  }
-
-  this.update2 = function() {
-    this.x = this.x + random(-100, 100);
-    this.y = this.y + random(-100, 100);
-
   }
 
   this.intersects = function(other) {
-    var d = dist(this.x, this.y, other.x, other.y);
+    var d = dist(this.x, this.y, mouseX, mouseY);
     if (d < this.r + other.r) {
     return true;
     } else {
@@ -173,30 +148,27 @@ function Bubble(tempX, tempY) {
     }
   }
 
-    this.changeColor = function() {
-      // stroke(2);
-      // this.r = 2;
-      // noFill();
-      // this.update2();
-      this.col = color(r, g, b);
-      strokeWeight(0);
-      stroke(value);
-      // noStroke();
+  this.changeColor = function() {
+      this.col = color(random(0, 255), random(0, 255), random(0, 255));
+      //or just red //
+      // this.col = color(255, 0, 0);
     }
-
 }
 
 function title(){
-
+  stroke(255, 0, 0)
+  fill(0);
+  rect(30, 50, 650, 170)
   stroke(255);
   strokeWeight(8);
   fill(0);
-  textSize(52);
-  text('Shh...', 50, 300);
-  textSize(24);
-  text('Navigate through the sleeping aliens to enter the next realm', 50, 350);
-  textSize(24);
-  text('Do not make a sound to make sure not to wake them', 50, 400);
+  textSize(34);
+  text('Watch Out!', 50, 100);
+  textSize(18);
+  text('Navigate through the spaceships by speaking loud to make them small', 50, 150);
+  textSize(18);
+  text('...make sure not to touch them so you avoid angering the ships', 50, 175);
+
 }
 
 function page7() {
@@ -213,7 +185,3 @@ function previous() {
   // let val = color(random(255),random(255),random(255));
   window.location='page5.html';
 }
-// function page7() {
-//   // let val = color(random(255),random(255),random(255));
-//   window.location='page7.html';
-// }

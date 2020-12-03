@@ -1,163 +1,105 @@
-var video;
-var drops = [];
-
-var vScale = 26;
-let camera;
-let song;
 let r, g, b;
 let mic, fft;
 let input;
 let analyzer;
 let rc, gc, bc;
+let img;
+let circle_x, circle_y, circle_size_x, circle_size_y;
+let threshold;
 
 
 function setup() {
-  createCanvas(700, 500);
+  createCanvas(windowWidth, windowHeight);
+  // img = loadImage('video/bus.png'); // Load the image
   r = random(255);
   g = random(255);
   b = random(255);
 
-  //camera
-  pixelDensity(1);
-  video = createCapture(VIDEO);
-  video.size(width / vScale, height / vScale);
+  circle_x = 100;
+  circle_y = height/2;
+  circle_size_x = 100;
+  circle_size_y = 50;
 
-   for (var i = 0; i < 500; i++) {
-    drops[i] = new Drop();
-  }
+  threshold = 0.1;
 
   button1 = createButton('Next');
-  button1.position(1100,  600);
+  button1.position(1200,  630);
   button1.mousePressed(page9);
   button1.style("color", "white");
   button1.style("background-color", "black");
-  button1.style("padding", "40px 40px");
+  button1.style("padding", "20px 40px");
 
-  button2 = createButton('Previous');
-  button2.position(100,  600);
+  button2 = createButton('Back');
+  button2.position(80,  630);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
-  button2.style("padding", "40px 40px");
+  button2.style("padding", "20px 40px");
 
-  backbutton = createButton('Home');
-  backbutton.position(630,  625);
+  backbutton = createButton('Restart');
+  backbutton.position(1200,  60);
   backbutton.mousePressed(goBack);
   backbutton.style("color", "white");
   backbutton.style("background-color", "black");
   backbutton.style("padding", "20px 40px");
 
-  //audio
-  // Create an Audio input
-  input = new p5.AudioIn();
+  // create a new Amplitude analyzer
   analyzer = new p5.Amplitude();
-  input.start();
+  // Patch the input to an volume analyzer
+  analyzer.setInput(mic);
+  //for mic
+  mic = new p5.AudioIn();
+  mic.start();
   fft = new p5.FFT();
-  fft.setInput(input);
+  fft.setInput(mic);
 
 }
 
 function draw() {
   background(0);
-  video.loadPixels();
+  title();
+
+  ///TO BE COMMENTED OUT/////
+  fill(255);
+  noStroke();
+  ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
+  /////////////////////////////////////////////////////////////////
+
+  /////TO BE COMMENTED FOR BUS/////
+  // image(img, circle_x, circle_y, circle_size_x, circle_size_y);
+//////////////////////////////////////////////////////////////////////
+
+  // Get the average (root mean square) amplitude
   let rms = analyzer.getLevel();
+  print('value: ' + rms);
+
+  fill(r, g, b, 0);
+  stroke(255, 0, 0);
+
+
   let spectrum = fft.analyze();
 
-
- // Get the overall volume (between 0 and 1.0)
-  let volume = input.getLevel();
-  let threshold = 0.01;
-
-  if (volume > threshold) {
-  clear();
-  background(0);
-
-  for (var z = 0; z < video.height; z++) {
-    for (var x = 0; x < video.width; x++) {
-      var index = (video.width - x + 1 + (z * video.width)) * 4;
-      var r = video.pixels[index + 0];
-      var g = video.pixels[index + 1];
-      var b = video.pixels[index + 2];
-      var bright = (r + g + b) / 3;
-      var w = map(bright, 0, 255, 0, vScale);
-      noStroke();
-      fill(r, g, b);
-      rectMode(CENTER);
-      rect(x * vScale, z * vScale, w, w);
-      }
-    }
-
-    stroke(255, 255, 0);
-    strokeWeight(25);
-    beginShape();
-      for (i = 0; i < spectrum.length; i++) {
-        point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-    }
-    endShape();
-  } else {
-    for (var i = 0; i < drops.length; i++) {
-    drops[i].fall();
-    drops[i].show();
-    }
-    strokeWeight(25);
-    stroke(255, 255, 0);
-    beginShape();
-      for (i = 0; i < spectrum.length; i++) {
-        point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-      }
-    endShape();
-
-    loadPixels();
-    for (var z = 0; z < video.height; z++) {
-    for (var x = 0; x < video.width; x++) {
-      var index = (video.width - x + 1 + (z * video.width)) * 4;
-      var r = video.pixels[index + 0];
-      var g = video.pixels[index + 1];
-      var b = video.pixels[index + 2];
-      var bright = (r + g + b) / 3;
-      var w = map(bright, 0, 255, 0, vScale);
-      noStroke();
-      fill(rc, g, bc);
-      rectMode(CENTER);
-      rect(x * vScale, z * vScale, w, w);
-      }
-    }
+  beginShape();
+  for (i = 0; i < spectrum.length; i++) {
+   point(i, map(spectrum[i], 0, 255, height, 0));
+  endShape();
   }
+    if (rms < threshold){
+    circle_x += 2;
+    }
 
 }
 
-function Drop() {
-
-  this.x = random(width);
-  this.y = random(-500, -50);
-  this.z = random(0, 20);
-  this.len = map(this.z, 0, 20, 10, 20);
-  this.yspeed = map(this.z, 0, 20, 1, 20);
-
-
-  this.fall = function () {
-    this.y = this.y + this.yspeed;
-    var grav = map(this.z, 0, 20, 0, 0.2);
-    this.yspeed = this.yspeed + grav;
-
-    if (this.y > height) {
-      this.y = random(-200, -100);
-      this.yspeed = map(this.z, 0, 20, 4, 10);
-    }
-  }
-
-
-  this.show = function () {
-    var thick = map(this.z, 0, 20, 1, 3);
-    rc = random(255);
-    gc = random(255);
-    bc = random(100, 255);
-    strokeWeight(10);
-    stroke(rc, gc, bc);
-    line(this.x, this.y, this.x, this.y + this.len);
-    // this.x--;
-    // this.y++;
-  }
+function title(){
+  fill(0);
+  rect(30, 50, 650, 170)
+  stroke(255);
+  strokeWeight(8);
+  fill(0);
+  textSize(34);
+  text('Speak Up...', 50, 100);
+  textSize(18);
+  text('Talk as loud as you can to make it through this last stretch on you journey', 50, 150);
 }
 
 

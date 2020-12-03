@@ -15,7 +15,7 @@ let c;
 
 function setup() {
   createCanvas(1300, 800);
-  img = loadImage('assets/photobooth.png'); // Load the image
+  img = loadImage('video/photobooth.png'); // Load the image
 
   webCamFeed = createCapture(VIDEO);
   webCamFeed.size(500,00);
@@ -28,12 +28,12 @@ function setup() {
   Shutter.size(90,30);
   Shutter.mousePressed(takePhoto);
 
-  button2 = createButton('Previous');
-  button2.position(100,  600);
-  button2.mousePressed(previous);
-  button2.style("color", "white");
-  button2.style("background-color", "black");
-  button2.style("padding", "40px 40px");
+  backbutton = createButton('Restart');
+  backbutton.position(1200,  60);
+  backbutton.mousePressed(goBack);
+  backbutton.style("color", "white");
+  backbutton.style("background-color", "black");
+  backbutton.style("padding", "20px 40px");
 
   buttonFXInvert = createButton('Invert');
   buttonFXInvert.position(300, 520);
@@ -69,9 +69,11 @@ function setup() {
 
 function draw() {
   background(255);
-  image(img, 0, 0, 1300, 800);
+  ///To be uncommented when hosted ////
+  // image(img, 0, 0, 1300, 800);
+  /////////////////////////////////////
+
   image(webCamFeed, 230, 135, 550, 480);
-  // title();
 
   if (FXInvertState == -1){
     filter(INVERT);
@@ -99,24 +101,11 @@ function draw() {
   updatePixels();
 }
 
-function title(){
-  stroke(255);
-  strokeWeight(8);
-  fill(0);
-  textSize(22);
-  text('Say Cheese', 250, 550);
-}
-
-
 function goBack() {
   // let val = color(random(255),random(255),random(255));
   window.location='index.html';
 }
 
-function previous() {
-  // let val = color(random(255),random(255),random(255));
-  window.location='page8.html';
-}
 
 function takePhoto(){
   saveFrames('selfie', 'png', 1, 1);

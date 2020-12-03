@@ -12,8 +12,19 @@ let playing = false;
 let fingers;
 let button;
 let vid;
+let img;
+let circle_x, circle_y, circle_size_x, circle_size_y;
+
 
 function setup() {
+  img = loadImage('video/bus.png'); // Load the image
+  vid = createVideo('video/Page4_new.mov');
+  vid.play();
+
+  circle_x = 100;
+  circle_y = windowHeight - 100;
+  circle_size_x = 150;
+  circle_size_y = 100;
   w = windowWidth;
   h = windowHeight;
   capture = createCapture(VIDEO);
@@ -22,21 +33,21 @@ function setup() {
   capture.hide();
 
   button1 = createButton('Next');
-  button1.position(1100,  600);
+  button1.position(1200,  630);
   button1.mousePressed(page5);
   button1.style("color", "white");
   button1.style("background-color", "black");
-  button1.style("padding", "40px 40px");
+  button1.style("padding", "20px 40px");
 
   button2 = createButton('Back');
-  button2.position(100,  600);
+  button2.position(80,  630);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
-  button2.style("padding", "40px 40px");
+  button2.style("padding", "20px 40px");
 
-  backbutton = createButton('Home');
-  backbutton.position(630,  625);
+  backbutton = createButton('Restart');
+  backbutton.position(1200,  60);
   backbutton.mousePressed(goBack);
   backbutton.style("color", "white");
   backbutton.style("background-color", "black");
@@ -45,23 +56,30 @@ function setup() {
   frameRate(10);
   colorMode(HSB);
 
-  // vid = createVideo(['video/Page4_new.mov']);
-  // vid.elt.muted = true;
-  // vid.loop();
-  // vid.hide();
-
   tracker = new clm.tracker();
   tracker.init();
   tracker.start(capture.elt);
+
 }
 
 function draw() {
-  background(255, 255, 0);
-
-  // fingers.loop();
+  background(0);
+  vid.position(0, 0);
+  vid.size(windowWidth, windowHeight);
   title();
+
+  ///TO BE UNCOMMENTED WHEN HOSTED//////
+  // image(img, mouseX - 50, mouseY - 50, circle_size_x, circle_size_y);
+  //noCursor();
+
+  // TEST OBJECT- Comment out when hosted /////
+  noStroke();
+  fill(255);
+  ellipse(mouseX, mouseY, circle_size_x, circle_size_y);
+
+
   // Flip the canvas so that we get a mirror image
-  strokeWeight(1);
+  strokeWeight(4);
 	translate(w, 0);
   scale(-1.0, 1.0);
   // Uncomment the line below to see the webcam image (and no trail)
@@ -93,17 +111,17 @@ function draw() {
 }
 
 function title(){
-  stroke(0);
-  strokeWeight(8);
   fill(255);
-  textSize(54);
-  text('Look Around...', 50, 250);
-  textSize(24);
-  text('Navigate the maze with your eyes', 50, 350);
-  textSize(24);
-  text('Be careful and try not to get lost', 50, 400);
-  textSize(14);
-  text('Press a key to start drawing again', 50, 450);
+  rect(30, 50, 600, 170)
+  stroke(255);
+  strokeWeight(8);
+  fill(0);
+  textSize(34);
+  text('Look Around...', 50, 100);
+  textSize(18);
+  text('Navigate the maze with your eyes and move the bus with the mouse', 50, 150);
+  textSize(18);
+  text('....Be careful and try not to get lost', 50, 175);
 }
 
 function getPoint(index) {
@@ -146,13 +164,8 @@ function drawEyeOutline(eye) {
 
 function keyPressed() {
   // Clear background
-  background(0, 255, 0);
+  background(255, 255, 0);
 
-}
-
-function mouseClicked() {
-  // const timestamp = timestampString();
-  // saveCanvas("eyeTrail-" + timestamp, "png");
 }
 
 function timestampString() {
@@ -180,74 +193,3 @@ function previous() {
   // let val = color(random(255),random(255),random(255));
   window.location='page3.html';
 }
-
-
-// let button;
-//
-// var vScale = 16;
-// let camera;
-// let r, g, b;
-// let mic, fft;
-// let input;
-// let analyzer;
-//
-// function setup() {
-//   createCanvas(1465, 800);
-//   background(color(random(255),random(255),random(255)));
-//   backbutton = createButton('BACK');
-//   button2 = createButton('Click for Audio Visualizer');
-//
-//   button1 = createButton('Next');
-//   button1.position(1000,  400);
-//   button1.mousePressed(page5);
-//   button1.style("color", "white");
-//   button1.style("background-color", "transparent");
-//   button1.style("padding", "40px 40px");
-//
-//   button2.position(400,  height/4);
-//   button2.mousePressed(draw);
-//   button2.style("color", "white");
-//   button2.style("background-color", "blue");
-//   button2.style("padding", "100px 100px");
-//
-//   backbutton.position(400,  500);
-//   backbutton.mousePressed(goBack);
-//   backbutton.style("color", "white");
-//   backbutton.style("background-color", "black");
-//   backbutton.style("padding", "20px 40px");
-//
-//   //audio
-// // Create an Audio input
-// input = new p5.AudioIn();
-// analyzer = new p5.Amplitude();
-// input.start();
-// fft = new p5.FFT();
-// fft.setInput(input);
-//
-//
-// }
-//
-// function draw(){
-//   background(0);
-//   let rms = analyzer.getLevel();
-//   fill(201, 153, 204);
-//   stroke(201, 153, 204);
-//   strokeWeight(50);
-//
-//   let spectrum = fft.analyze();
-//     beginShape();
-//       for (i = 0; i < spectrum.length; i++) {
-//         point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-//     }
-//     endShape();
-// }
-//
-// function goBack() {
-//   // let val = color(random(255),random(255),random(255));
-//   window.location='index.html';
-// }
-//
-// function page5() {
-//   // let val = color(random(255),random(255),random(255));
-//   window.location='page5.html';
-// }
