@@ -51,10 +51,10 @@ function draw() {
     // fill(255);
 
     //FOR IMAGE BECAUSE DOES NOT LOAD IF NOT HOSTED
-    // image(img, circle_x, circle_y, circle_size_x, circle_size_y);
+    image(img, circle_x, circle_y, circle_size_x, circle_size_y);
 
     // TEST OBJECT
-    ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
+    // ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
     // circle_x = circle_x + (mouseX - circle_x)/3;
     // circle_y = circle_y + (mouseY - circle_y)/3;
 
