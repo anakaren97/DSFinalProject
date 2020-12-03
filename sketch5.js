@@ -3,36 +3,40 @@ var video;
 let mic, fft;
 let input;
 let analyzer;
+let img;
 
 var vScale = 15;
 let back = 51;
 let fillColor = 0;
-
+var vScale = 16;
 let camera;
+
+function preload() {
+  img = loadImage('assets/backvan.png');
+}
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //background(color(random(255),random(255),random(255)));
 
   r = random(255);
   g = random(255);
   b = random(255);
 
   button1 = createButton('Next');
-  button1.position(1200,  630);
+  button1.position(1100,  600);
   button1.mousePressed(page6);
   button1.style("color", "white");
   button1.style("background-color", "black");
-  button1.style("padding", "20px 40px");
+  button1.style("padding", "40px 40px");
 
   button2 = createButton('Back');
-  button2.position(80,  630);
+  button2.position(100,  600);
   button2.mousePressed(previous);
   button2.style("color", "white");
   button2.style("background-color", "black");
-  button2.style("padding", "20px 40px");
+  button2.style("padding", "40px 40px");
 
-  backbutton = createButton('Restart');
-  backbutton.position(1200,  60);
+  backbutton = createButton('Home');
+  backbutton.position(630,  625);
   backbutton.mousePressed(goBack);
   backbutton.style("color", "white");
   backbutton.style("background-color", "black");
@@ -41,22 +45,28 @@ function setup() {
   //camera
   pixelDensity(1);
   video = createCapture(VIDEO);
-  video.size(width / vScale, height / vScale);
-    video.position(width/2, 0);
+  video.size(500 / vScale, 400 / vScale);
+  video.position(width/4, 100);
     // Create an Audio input
     input = new p5.AudioIn();
     analyzer = new p5.Amplitude();
     input.start();
     fft = new p5.FFT();
     fft.setInput(input);
+
+    //van image
+     image(img, width/3.5, 200);
+
 }
 
 function draw() {
-  background(back);
+background(back);
+  fill(back);
+  rect(10,10, 40,40);
 
   let rms = analyzer.getLevel();
 
-  stroke(random(200,255),fillColor,fillColor);
+  stroke(223,255,fillColor);
   strokeWeight(5);
 
   let spectrum = fft.analyze();
@@ -68,6 +78,7 @@ function draw() {
 
 
   video.loadPixels();
+  translate(width/3, 230);
   for (var y = 0; y < video.height; y++) {
     for (var x = 0; x < video.width; x++) {
       var index = (video.width - x + 1 + (y * video.width)) * 4;
@@ -79,7 +90,9 @@ function draw() {
       noStroke();
       fill(fillColor,50,250);
       rectMode(CENTER);
-      rect(x * vScale, y * vScale, random(20,40),w, random(20,30));
+
+      rect(x *16, y * 16,random(20,30),w, random(20,30));
+
     }
   }
 
