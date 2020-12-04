@@ -1,7 +1,6 @@
 html, body {
   margin: -30px;
-  padding: -30px;
-
+  /* padding: -30px; */
 
 }
 canvas {
@@ -17,8 +16,8 @@ body {
 
 .container {
   position: absolute;
-  transform: translate(-90%, -120%);
-  top: 40%;
+  transform: translate(-90%, -70%);
+  top: 30%;
   left: 50%;
 }
 
@@ -162,6 +161,7 @@ body {
   /* right: -1;
   left: -3;
   bottom: 2; */
+
   width: 1800px;
   height: 1100px;
   opacity: 30%;

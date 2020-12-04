@@ -68,7 +68,7 @@ function draw() {
 
   /////TO BE COMMENTED FOR BUS/////
   image(img, circle_x, circle_y, circle_size_x, circle_size_y);
-//////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
 
   // Get the average (root mean square) amplitude
   let rms = analyzer.getLevel();
@@ -87,7 +87,7 @@ function draw() {
   endShape();
   }
     if (rms < threshold){
-    circle_x += 8;
+    circle_x += 5;
   }
 
   if(circle_x > windowWidth){

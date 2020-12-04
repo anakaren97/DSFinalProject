@@ -70,15 +70,15 @@ function draw() {
  let volume = input.getLevel();
 
 
-  for (i = 0; i < spectrum.length; i++) {
-    rc = random(255);
-    gc = random(255);
-    bc = random(100, 255);
-    strokeWeight(10);
-    stroke(rc, g, bc);
-    point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-
-    }
+  // for (i = 0; i < spectrum.length; i++) {
+  //   rc = random(255);
+  //   gc = random(255);
+  //   bc = random(100, 255);
+  //   strokeWeight(10);
+  //   stroke(rc, g, bc);
+  //   point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
+  //
+  //   }
 
     for (var i = 0; i < bubbles.length; i++) {
        bubbles[i].update();
@@ -88,10 +88,10 @@ function draw() {
          if (i != j && bubbles[i].intersects(bubbles[j])) {
            bubbles[i].changeColor();
            ///TO BE UNCOMMENTED WHEN HOSTED//////
-           // dingdong.play();
+           dingdong.play();
          } else {
            ///TO BE UNCOMMENTED WHEN HOSTED//////
-           // dingdong.pause();
+           dingdong.pause();
          }
        }
      }

@@ -65,7 +65,7 @@ function setup() {
 
 function draw() {
   background(255);
-  image(img, 0, -50, 1450, 900);
+  image(img, 0, -50, 1450, 1000);
   image(webCamFeed, 257, 103, 620, 535);
 
   if (FXInvertState == -1){
