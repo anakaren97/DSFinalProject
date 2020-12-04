@@ -4,6 +4,7 @@ let mic, fft;
 let input;
 let analyzer;
 let img;
+let timer = 30;
 
 var vScale = 15;
 let back = 51;
@@ -64,6 +65,19 @@ function draw() {
 background(back);
   fill(back);
   rect(10,10, 40,40);
+
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  fill(255, 23, 220);
+  text(timer, width/2, 700);
+
+  ///// Page Timer
+  if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+      timer --;
+    }
+    if (timer == 0) {
+      window.location='page6.html';
+    }
 
   let rms = analyzer.getLevel();
 

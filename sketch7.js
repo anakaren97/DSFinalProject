@@ -1,6 +1,7 @@
 let angle = 0;
 var theta = 0; // must be 0
 var offset = 0.01;
+let timer = 30;
 
 function setup() {
   createCanvas(1500, 900, WEBGL);
@@ -36,7 +37,18 @@ function draw() {
   let locX = mouseX - height / 2;
 let locY = mouseY - width / 2;
 
+textAlign(CENTER, CENTER);
+textSize(50);
+fill(255, 23, 220);
+text(timer, width/2, 700);
 
+///// Page Timer
+if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer --;
+  }
+  if (timer == 0) {
+    window.location='page8.html';
+  }
 pointLight(250, 250, 200, locX, locY, 10);
    //pointLight(255, 255, 255, 50*cos(theta), 0, 150);
 

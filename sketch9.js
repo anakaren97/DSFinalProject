@@ -15,7 +15,7 @@ let c;
 
 function setup() {
   createCanvas(1450, 900);
-  img = loadImage('video/photobooth_new_new.png'); // Load the image
+  // img = loadImage('video/photobooth_new_new.png'); // Load the image
   webCamFeed = createCapture(VIDEO);
 
   Shutter = createButton('Take a Photo');
@@ -65,7 +65,7 @@ function setup() {
 
 function draw() {
   background(255);
-  image(img, 0, -50, 1450, 1000);
+  // image(img, 0, -50, 1450, 1000);
   image(webCamFeed, 257, 103, 620, 535);
 
   if (FXInvertState == -1){

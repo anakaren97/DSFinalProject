@@ -12,6 +12,7 @@ let rc, gc, bc;
 let value = 0;
 let img;
 let dingdong;
+let timer = 30;
 
 function setup() {
   createCanvas(1500, 900);
@@ -61,6 +62,19 @@ function setup() {
 function draw() {
   background(0);
   // title();
+
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  fill(255, 23, 220);
+  text(timer, width/2, 700);
+
+  ///// Page Timer
+  if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+      timer --;
+    }
+    if (timer == 0) {
+      window.location='page7.html';
+    }
 
   let rms = analyzer.getLevel();
   let spectrum = fft.analyze();

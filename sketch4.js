@@ -3,15 +3,18 @@
 // the canvas, with random colors for the irises. Click on the
 // canvas to save an image; press a key to clear the canvas.
 
-// Starting point: https://editor.p5js.org/kylemcdonald/sketches/BJOcyD9hm 🙏
+// Starting point: https://editor.p5js.org/kylemcdonald/sketches/BJOcyD9hm
 
 let capture = null;
 let tracker = null;
 let positions = null;
 let w = 0, h = 0;
+let timer = 30;
 
 function setup() {
   img = loadImage('video/bus.png'); // Load the image
+
+
 
   w = 1500;
   h = 900;
@@ -66,7 +69,18 @@ function draw() {
   fill(255);
   // ellipse(mouseX, mouseY, circle_size_x, circle_size_y);
   // noCursor();
+  textAlign(CENTER, CENTER);
+  textSize(50);
+  fill(255, 23, 220);
+  text(timer, width/2, 700);
 
+  ///// Page Timer
+  if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+      timer --;
+    }
+    if (timer == 0) {
+      window.location='page5.html';
+    }
   // Flip the canvas so that we get a mirror image
 	translate(w, 0);
   scale(-1.0, 1.0);
