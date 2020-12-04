@@ -12,9 +12,9 @@ let fillColor = 0;
 var vScale = 16;
 let camera;
 
-function preload() {
-  img = loadImage('assets/backvan.png');
-}
+//function preload() {
+ //img = loadImage('assets/backvan.png');
+//}
 function setup() {
   createCanvas(windowWidth, windowHeight);
   //background(color(random(255),random(255),random(255)));
@@ -47,8 +47,9 @@ function setup() {
   //camera
   pixelDensity(1);
   video = createCapture(VIDEO);
-  video.size(500 / vScale, 400 / vScale);
+  video.size(330 / vScale, 240 / vScale);
   video.position(width/4, 100);
+  video.hide();
     // Create an Audio input
     input = new p5.AudioIn();
     analyzer = new p5.Amplitude();
@@ -57,14 +58,15 @@ function setup() {
     fft.setInput(input);
 
     //van image
-     image(img, width/3.5, 200);
+     //image(img, width/3, 200);
+    // img.style("z-index", "5");
 
 }
 
 function draw() {
-background(back);
+//background(back);
   fill(back);
-  rect(10,10, 40,40);
+rect(width/1.94, 345, 330,240);
 
   textAlign(CENTER, CENTER);
   textSize(50);
@@ -79,21 +81,20 @@ background(back);
       window.location='page6.html';
     }
 
-  let rms = analyzer.getLevel();
+//  let rms = analyzer.getLevel();
 
-  stroke(223,255,fillColor);
-  strokeWeight(5);
+//  stroke(223,255,fillColor);
+//  strokeWeight(5);
 
-  let spectrum = fft.analyze();
-    beginShape();
-      for (i = 0; i < spectrum.length; i++) {
-        line(i * 10, map(spectrum[i] * 2, 0, 10, -height/8, 0), width/2, height/2);
-    }
-    endShape();
+// let spectrum = fft.analyze();
+  // beginShape();
+  //  for (i = 0; i < spectrum.length; i++) {
+    //   line(i , map(spectrum[i] , 0, 2, -100, 0), width/2, height/2);  }
+  //  endShape();
 
 
   video.loadPixels();
-  translate(width/3, 230);
+  translate(width/2.4, 230);
   for (var y = 0; y < video.height; y++) {
     for (var x = 0; x < video.width; x++) {
       var index = (video.width - x + 1 + (y * video.width)) * 4;

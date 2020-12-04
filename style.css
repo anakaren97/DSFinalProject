@@ -202,3 +202,12 @@ body {
   height: 110%;
   /* opacity: 30%; */
 }
+/*image on page 5 */
+img {
+  max-width: 100%;
+   height: auto;
+   padding-left: 15%;
+   padding-top: 10%;
+   position: absolute;
+   z-index: 10;
+}
