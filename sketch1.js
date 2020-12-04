@@ -135,32 +135,32 @@ function draw() {
   pop();
   //van top
   push();
-  translate(0,160,100);
+  translate(0,180,100);
   //fill(237, 34, 93);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
   scale(0.6);
-  emissiveMaterial(77,249,192);
+  ambientMaterial(250);
   model(van);
   pop();
   //van bottom
   push();
-  translate(0,-160,100);
+  translate(0,-180,100);
   //fill(237, 34, 93);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
   scale(0.6);
-  emissiveMaterial(192,77,249);
+  ambientMaterial(192,77,249);
   model(van);
   pop();
   //van left
   push();
-  translate(-160,0,100);
+  translate(-190,0,100);
   //fill(237, 34, 93);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
   scale(0.6);
-  emissiveMaterial(130, 230, 0);
+  ambientMaterial(130, 230, 0);
   model(van);
   pop();
   // Cursor
