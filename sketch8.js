@@ -70,11 +70,11 @@ function draw() {
   /////TO BE COMMENTED FOR BUS/////
   image(img, circle_x, circle_y, circle_size_x, circle_size_y);
   //////////////////////////////////////////////////////////////////////
-
+  noStroke();
   textAlign(CENTER, CENTER);
   textSize(50);
   fill(255, 23, 220);
-  text(timer, width/2, 700);
+  text(timer, 800, 750);
 
   ///// Page Timer
   if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0

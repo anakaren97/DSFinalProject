@@ -62,7 +62,7 @@ function setup() {
 function draw() {
   background(0);
   // title();
-
+  noStroke();
   textAlign(CENTER, CENTER);
   textSize(50);
   fill(255, 23, 220);
