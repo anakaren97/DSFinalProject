@@ -175,10 +175,12 @@ body {
   height: 100%;
 }
 #PhotoBooth {
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 0;
+  position: absolute;
+  /* right: -1;
+  left: -3;
+  bottom: 2; */
 
-  opacity: 60%;
+  width: 105%;
+  height: 110%;
+  /* opacity: 30%; */
 }
