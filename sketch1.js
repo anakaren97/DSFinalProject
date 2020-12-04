@@ -135,7 +135,7 @@ function draw() {
   pop();
   //van top
   push();
-  translate(0,110,100);
+  translate(0,160,100);
   //fill(237, 34, 93);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
@@ -145,7 +145,7 @@ function draw() {
   pop();
   //van bottom
   push();
-  translate(0,-110,100);
+  translate(0,-160,100);
   //fill(237, 34, 93);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
@@ -155,7 +155,7 @@ function draw() {
   pop();
   //van left
   push();
-  translate(-110,-110,100);
+  translate(-160,0,100);
   //fill(237, 34, 93);
   rotateX(frameCount * 0.01);
   rotateY(frameCount * 0.01);
