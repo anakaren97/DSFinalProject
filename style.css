@@ -239,8 +239,8 @@ body {
 img {
   max-width: 100%;
    height: auto;
-   padding-left: 15%;
-   padding-top: 10%;
+   padding-left: 33vw;
+   padding-top: 27vh;
    position: absolute;
    z-index: 10;
 }

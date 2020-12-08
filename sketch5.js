@@ -96,11 +96,12 @@ function draw() {
       var b = video.pixels[index + 2];
       var bright = (r + g + b) / 3;
       var w = map(bright, 0, 255, 0, vScale);
+      var r = map(bright, 0, random(0,255), 0, vScale);
       noStroke();
       fill(fillColorR,fillColorG,fillColorB);
       rectMode(CENTER);
 
-      rect(x *16, y * 16,random(20,30),w, shape);
+      rect(x *16, y * 16,shape,w, shape);
 
     }
   }
@@ -113,7 +114,7 @@ function keyPressed() {
     keyIndex = key.charCodeAt(0) - 'a'.charCodeAt(0);
   }
   if (keyIndex === -1) {
-    shape = 20
+    shape = 20;
     fillColorR = 0;
     fillColorG = 50;
     fillColorB =  100;
@@ -123,7 +124,7 @@ function keyPressed() {
     fillColorG = random(0,255);
     fillColorB = random(0,255);
     back = random(100,255);
-    shape = random(0,250)
+    shape = random(0,30)
   }
 }
 
