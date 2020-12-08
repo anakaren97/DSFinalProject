@@ -8,7 +8,10 @@ let timer = 30;
 
 var vScale = 15;
 let back = 51;
-let fillColor = 0;
+let fillColorR = 0;
+let fillColorG = 50;
+let fillColorB = 100;
+let shape = 20;
 var vScale = 16;
 let camera;
 
@@ -66,7 +69,7 @@ function setup() {
 function draw() {
   background(255);
   fill(back);
-  rect(width/1.85, 345, 330,240);
+  rect(windowWidth/1.98, windowHeight/2, 370, 240 );
 
   textAlign(CENTER, CENTER);
   textSize(50);
@@ -81,20 +84,10 @@ function draw() {
       window.location='page6.html';
     }
 
-//  let rms = analyzer.getLevel();
-
-//  stroke(223,255,fillColor);
-//  strokeWeight(5);
-
-// let spectrum = fft.analyze();
-  // beginShape();
-  //  for (i = 0; i < spectrum.length; i++) {
-    //   line(i , map(spectrum[i] , 0, 2, -100, 0), width/2, height/2);  }
-  //  endShape();
 
 
   video.loadPixels();
-  translate(width/2.4, 230);
+  translate(windowWidth/2.5, windowHeight/3);
   for (var y = 0; y < video.height; y++) {
     for (var x = 0; x < video.width; x++) {
       var index = (video.width - x + 1 + (y * video.width)) * 4;
@@ -104,23 +97,33 @@ function draw() {
       var bright = (r + g + b) / 3;
       var w = map(bright, 0, 255, 0, vScale);
       noStroke();
-      fill(fillColor,50,250);
+      fill(fillColorR,fillColorG,fillColorB);
       rectMode(CENTER);
 
-      rect(x *16, y * 16,random(20,30),w, random(20,30));
+      rect(x *16, y * 16,random(20,30),w, shape);
 
     }
   }
 
 
 }
-function mousePressed() {
-  if (fillColor === 0 && back == 51) {
-    fillColor = random(0,255);
-    back = random(100,255);
-  } else {
-    fillColor =  0;
+function keyPressed() {
+  let keyIndex = -1;
+  if (key >= 'a' && key <= 'z') {
+    keyIndex = key.charCodeAt(0) - 'a'.charCodeAt(0);
+  }
+  if (keyIndex === -1) {
+    shape = 20
+    fillColorR = 0;
+    fillColorG = 50;
+    fillColorB =  100;
     back = 51;
+  } else {
+    fillColorR = random(0,255);
+    fillColorG = random(0,255);
+    fillColorB = random(0,255);
+    back = random(100,255);
+    shape = random(0,250)
   }
 }
 
