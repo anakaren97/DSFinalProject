@@ -16,9 +16,9 @@ let timer = 30;
 
 function setup() {
   createCanvas(1500, 900);
-  img = loadImage('video/bus.png'); // Load the image
+  // img = loadImage('video/bus.png'); // Load the image
   soundFormats('mp3', 'ogg');
-  dingdong = loadSound('assets/sound.mp3');
+  dingdong = loadSound('assets/sound_new.mp3');
   //audio
   // Create an Audio input
   input = new p5.AudioIn();
@@ -69,7 +69,7 @@ function draw() {
   text(timer, width/2, 700);
 
   ///// Page Timer
-  if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+  if (frameCount % 20 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
       timer --;
     }
     if (timer == 0) {
@@ -98,28 +98,30 @@ function draw() {
        bubbles[i].update();
        bubbles[i].display();
        bubbles[i].display2();
+       print('Bubbles: ' + bubbles.length);
+
+       // if(bubbles[i].display == 0){
+       //   window.location='page7.html';
+       // }
+
        for (var j = 0; j < bubbles.length; j++) {
          if (i != j && bubbles[i].intersects(bubbles[j])) {
            bubbles[i].changeColor();
            ///TO BE UNCOMMENTED WHEN HOSTED//////
            dingdong.play();
-         } else {
-           ///TO BE UNCOMMENTED WHEN HOSTED//////
-           dingdong.pause();
-         }
+         } 
        }
      }
-    // title();
 
-  //TO BE COMMENTED WHEN HOSTED////
-    // stroke(100);
-    // fill(0, 255, 0);
-    // ellipse(mouseX, mouseY, 40, 40);
+  //TO BE UNCOMMENTED WHEN NOT HOSTED////
+    stroke(100);
+    fill(0, 255, 0);
+    ellipse(mouseX, mouseY, 40, 40);
   ////////////////////////////////////
 
   ///TO BE UNCOMMENTED WHEN HOSTED//////
-    image(img, mouseX - 50, mouseY - 50, 150, 100);
-    noCursor();
+    // image(img, mouseX - 50, mouseY - 50, 150, 100);
+    // noCursor();
   /////////////////////////////////////
 
 }
@@ -149,8 +151,11 @@ function Bubble(tempX, tempY) {
 }
 
   this.update = function() {
-    this.x = this.x + random(-5, 5);
+    this.x -= 9;
     this.y = this.y + random(-5, 5);
+
+
+
   }
 
   this.intersects = function(other) {
@@ -168,22 +173,6 @@ function Bubble(tempX, tempY) {
       // this.col = color(255, 0, 0);
     }
 }
-
-// function title(){
-//   stroke(255, 0, 0)
-//   fill(0);
-//   rect(30, 50, 650, 170)
-//   stroke(255);
-//   strokeWeight(8);
-//   fill(0);
-//   textSize(34);
-//   text('Watch Out!', 50, 100);
-//   textSize(18);
-//   text('Navigate through the spaceships by speaking loud to make them small', 50, 150);
-//   textSize(18);
-//   text('...make sure not to touch them so you avoid angering the ships', 50, 175);
-//
-// }
 
 function page7() {
   // let val = color(random(255),random(255),random(255));
