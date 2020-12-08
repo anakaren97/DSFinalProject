@@ -19,7 +19,7 @@ function setup() {
   webCamFeed.size(650,545);
   webCamFeed.position(257,102);
   webCamFeed.hide();
-  img = loadImage('video/photobooth_new_new.png'); // Load the image
+  img = loadImage('video/photobooth.jpeg'); // Load the image
 
     Shutter = createButton('Take a Photo');
     Shutter.style('background-color', 'pink')
