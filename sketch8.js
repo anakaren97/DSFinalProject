@@ -5,9 +5,10 @@ let analyzer;
 let rc, gc, bc;
 let img;
 let circle_x, circle_y, circle_size_x, circle_size_y;
-let threshold;
+let dots_x, dots_y, dots_size_x, dots_size_y;
 let widthofCanvas;
 let timer = 30;
+
 
 function setup() {
   widthofCanvas = 1800;
@@ -22,7 +23,10 @@ function setup() {
   circle_size_x = 150;
   circle_size_y = 100;
 
-  threshold = 0.1;
+  dots_x = 2;
+  dots_y = 10;
+  dots_size_x = 20;
+  dots_size_y = 20;
 
   button1 = createButton('Next');
   button1.position(1200,  630);
@@ -59,7 +63,6 @@ function setup() {
 
 function draw() {
   background(0);
-  // title();
 
   ///TO BE COMMENTED OUT/////
   // fill(255, 0, 0);
@@ -70,13 +73,11 @@ function draw() {
   /////TO BE COMMENTED FOR BUS/////
   image(img, circle_x, circle_y, circle_size_x, circle_size_y);
   //////////////////////////////////////////////////////////////////////
-  noStroke();
-  textAlign(CENTER, CENTER);
-  textSize(50);
-  fill(255, 23, 220);
-  text(timer, 800, 750);
 
-  ///// Page Timer
+  circle_x += 1;
+
+
+  ///// Page Timer //////
   if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
       timer --;
     }
@@ -84,25 +85,29 @@ function draw() {
       window.location='page9.html';
     }
 
+
   // Get the average (root mean square) amplitude
   let rms = analyzer.getLevel();
-  print('value: ' + rms);
-  print('circle_x Value: ' + circle_x);
-
-  fill(r, g, b, 0);
-  stroke(255, 0, 0);
-  strokeWeight(20);
-
   let spectrum = fft.analyze();
 
-  beginShape();
+  fill(240, 41, 213);
+  noStroke();
+
   for (i = 0; i < spectrum.length; i++) {
-   point(i*10, map(spectrum[i]* 2, 0, 255, height, 0));
-  endShape();
+    ellipse(i * 10, map(spectrum[i], 0, 255, height, 0), dots_size_x, dots_size_y);
+
   }
-    if (rms < threshold){
-    circle_x += 5;
+
+  var d = dist(dots_x, dots_y, circle_x, circle_y);
+  if (d >= 500) {
+    circle_x += 4;
   }
+  if (d >= 900) {
+    circle_x += 6;
+  }
+
+  print('dist: ' + d); //10
+  // print('circle_y :' + circle_y); //450
 
   if(circle_x > windowWidth){
     window.location='page9.html';
@@ -110,17 +115,6 @@ function draw() {
 
 }
 
-// function title(){
-//   fill(0);
-//   rect(30, 50, 650, 170)
-//   stroke(255);
-//   strokeWeight(8);
-//   fill(0);
-//   textSize(34);
-//   text('Speak Up...', 50, 100);
-//   textSize(18);
-//   text('Talk as loud as you can to make it through this last stretch on you journey', 50, 150);
-// }
 
 
 function page9() {

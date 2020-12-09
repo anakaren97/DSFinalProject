@@ -13,10 +13,13 @@ let value = 0;
 let img;
 let dingdong;
 let timer = 30;
+let onScreen = false;
+let xSpeed = 5;
+let ySpeed = 5;
 
 function setup() {
   createCanvas(1500, 900);
-  // img = loadImage('video/bus.png'); // Load the image
+  img = loadImage('video/bus.png'); // Load the image
   soundFormats('mp3', 'ogg');
   dingdong = loadSound('assets/sound_new.mp3');
   //audio
@@ -27,14 +30,16 @@ function setup() {
   fft = new p5.FFT();
   fft.setInput(input);
 
+
   r = random(255);
   g = random(255);
   b = random(255);
   circle_x = 200;
   circle_y = 200;
 
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 30; i++) {
     bubbles[i] = new Bubble(random(width), random(height));
+
   }
 
   button1 = createButton('Next');
@@ -61,14 +66,8 @@ function setup() {
 
 function draw() {
   background(0);
-  // title();
-  noStroke();
-  textAlign(CENTER, CENTER);
-  textSize(50);
-  fill(255, 23, 220);
-  text(timer, width/2, 700);
 
-  ///// Page Timer
+  ///// Page Timer //////
   if (frameCount % 20 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
       timer --;
     }
@@ -76,52 +75,33 @@ function draw() {
       window.location='page7.html';
     }
 
-  let rms = analyzer.getLevel();
-  let spectrum = fft.analyze();
-
- // Get the overall volume (between 0 and 1.0)
- let threshold = 0.01;
- let volume = input.getLevel();
-
-
-  // for (i = 0; i < spectrum.length; i++) {
-  //   rc = random(255);
-  //   gc = random(255);
-  //   bc = random(100, 255);
-  //   strokeWeight(10);
-  //   stroke(rc, g, bc);
-  //   point(i * 10, map(spectrum[i] * 2, 0, 255, height, 0));
-  //
-  //   }
 
     for (var i = 0; i < bubbles.length; i++) {
        bubbles[i].update();
        bubbles[i].display();
        bubbles[i].display2();
-       print('Bubbles: ' + bubbles.length);
 
-       // if(bubbles[i].display == 0){
-       //   window.location='page7.html';
-       // }
 
        for (var j = 0; j < bubbles.length; j++) {
          if (i != j && bubbles[i].intersects(bubbles[j])) {
            bubbles[i].changeColor();
            ///TO BE UNCOMMENTED WHEN HOSTED//////
-           dingdong.play();
-         } 
+           masterVolume(0.03, [10])
+           // dingdong.play();
+         }
        }
-     }
+
+   }
 
   //TO BE UNCOMMENTED WHEN NOT HOSTED////
-    stroke(100);
-    fill(0, 255, 0);
-    ellipse(mouseX, mouseY, 40, 40);
+    // stroke(100);
+    // fill(0, 255, 0);
+    // ellipse(mouseX, mouseY, 40, 40);
   ////////////////////////////////////
 
   ///TO BE UNCOMMENTED WHEN HOSTED//////
-    // image(img, mouseX - 50, mouseY - 50, 150, 100);
-    // noCursor();
+    image(img, mouseX - 50, mouseY - 50, 150, 100);
+    noCursor();
   /////////////////////////////////////
 
 }
@@ -151,11 +131,22 @@ function Bubble(tempX, tempY) {
 }
 
   this.update = function() {
-    this.x -= 9;
-    this.y = this.y + random(-5, 5);
 
+    this.x += xSpeed;
+    this.y += ySpeed;
 
+    if (this.x < 0 || this.x > windowWidth) {
+      xSpeed *= -1;
+    }
 
+    if (this.y < 0  || this.y > windowHeight) {
+      ySpeed *= -1;
+    }
+    // this.x -= 9;
+    // this.y = this.y + random(-5, 5);
+    // if(this.x <= 0 || this.x >= windowWidth){
+    //   // window.location='page7.html';
+    // }
   }
 
   this.intersects = function(other) {
@@ -171,7 +162,10 @@ function Bubble(tempX, tempY) {
       this.col = color(random(0, 255), random(0, 255), random(0, 255));
       //or just red //
       // this.col = color(255, 0, 0);
+      this.update;
     }
+
+
 }
 
 function page7() {
