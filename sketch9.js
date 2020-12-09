@@ -14,15 +14,26 @@ var FXPorklifeState = 1;
 saveCount = 0;
 let img;
 var filter;
+var vScale = 15;
+let fillColorR = 0;
+let fillColorG = 50;
+let fillColorB = 100;
+let shape = 20;
+var vScale = 16;
+
+
 
 function setup() {
   createCanvas(1500,900);
   pixelDensity(1);
   webCamFeed = createCapture(VIDEO);
-  webCamFeed.size(650, 545);
+  // webCamFeed.size(650, 545);
+  webCamFeed.size(650 / vScale, 545 / vScale);
   webCamFeed.position(257,102);
   webCamFeed.hide();
-
+  r = random(255);
+  g = random(255);
+  b = random(255);
   // filter = createCapture(VIDEO);
   // filter.size(650 / vScale ,545 / vScale );
   // filter.position(vScale / 257 , 102 / vScale );
@@ -50,22 +61,23 @@ function draw() {
   image(img, 0, -50, 1500, 900);
 	image(webCamFeed, 257, 102, 650, 545);
 
-  // filter.loadPixels();
-  // for (var z = 0; z < filter.height; z++) {
-  //  for (var x = 0; x < filter.width; x++) {
-  //    var index = (filter.width - x + 1 + (z * filter.width)) * 4;
-  //    var r = filter.pixels[index + 0];
-  //    var g = filter.pixels[index + 1];
-  //    var b = filter.pixels[index + 2];
-  //    var bright = (r + g + b) / 3;
-  //    var w = map(bright, 0, 255, 0, vScale);
-  //    noStroke();
-  //    fill(r, g, b);
-  //    rectMode(CENTER);
-  //    rect(x * vScale, z * vScale, w, w);
-  //    }
-  //  }
-
+  webCamFeed.loadPixels();
+  translate(windowWidth/5, windowHeight/7);
+  for (var y = 0; y < webCamFeed.height; y++) {
+    for (var x = 0; x < webCamFeed.width; x++) {
+      var index = (webCamFeed.width - x + 1 + (y * webCamFeed.width)) * 4;
+      var r = webCamFeed.pixels[index + 0];
+      var g = webCamFeed.pixels[index + 1];
+      var b = webCamFeed.pixels[index + 2];
+      var bright = (r + g + b) / 3;
+      var w = map(bright, 0, 255, 0, vScale);
+      var r = map(bright, 0, random(0,255), 0, vScale);
+      noStroke();
+      fill(153, 109, 199);
+      rectMode(CENTER);
+      rect(x *16, y * 16,shape,w, shape);
+    }
+  }
 }
 
 
