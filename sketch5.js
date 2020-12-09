@@ -14,6 +14,7 @@ let fillColorB = 100;
 let shape = 20;
 var vScale = 16;
 let camera;
+let bgVideo;
 
 //function preload() {
  //img = loadImage('assets/backvan.png');
@@ -26,6 +27,7 @@ function setup() {
   Shutter.position(windowWidth/2.15,650);
   Shutter.size(90,40);
   Shutter.mousePressed(takePhoto);
+  bgVideo = loadImage('assets/backvan.png'); // Load the image
 
   r = random(255);
   g = random(255);
@@ -105,6 +107,8 @@ function draw() {
 
     }
   }
+  image(bgVideo,-100, -50, 570, 500);
+
 
 
 }
