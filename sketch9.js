@@ -7,8 +7,6 @@ var buttonFXPosterize;
 var buttonFXPorklife;
 var buttonReset;
 var sliderExp;
-var FXInvertState = 1;
-var FXPosterizeState = 1;
 var vScale = 15;
 var FXPorklifeState = 1;
 saveCount = 0;

@@ -5,7 +5,7 @@ let input;
 let analyzer;
 let img;
 let timer = 30;
-
+var Shutter;
 var vScale = 15;
 let back = 51;
 let fillColorR = 0;
@@ -21,6 +21,11 @@ let camera;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   //background(color(random(255),random(255),random(255)));
+  Shutter = createButton('Take a Photo');
+  Shutter.style('background-color', 'pink')
+  Shutter.position(windowWidth/2.15,650);
+  Shutter.size(90,40);
+  Shutter.mousePressed(takePhoto);
 
   r = random(255);
   g = random(255);
@@ -51,7 +56,7 @@ function setup() {
   pixelDensity(1);
   video = createCapture(VIDEO);
   video.size(370 / vScale, 240 / vScale);
-  video.position(width/4, 100);
+  video.position(width/7.5, 100);
   video.hide();
     // Create an Audio input
     input = new p5.AudioIn();
@@ -69,12 +74,7 @@ function setup() {
 function draw() {
   background(255);
   fill(back);
-  rect(windowWidth/1.98, windowHeight/2, 370, 240 );
-
-  textAlign(CENTER, CENTER);
-  textSize(50);
-  fill(255, 23, 220);
-  text(timer, 800, 700);
+  rect(windowWidth/1.85, windowHeight/2.08, 370, 240 );
 
   ///// Page Timer
   if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
@@ -128,6 +128,9 @@ function keyPressed() {
   }
 }
 
+function takePhoto(){
+save("selfie.png");
+}
 
 function goBack() {
   // let val = color(random(255),random(255),random(255));
