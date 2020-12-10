@@ -52,6 +52,13 @@ function setup() {
     backbutton.style("background-color", "black");
     backbutton.style("padding", "20px 40px");
 
+    citebutton = createButton('Citation');
+    citebutton.position(100,  60);
+    citebutton.mousePressed(cite);
+    citebutton.style("color", "white");
+    citebutton.style("background-color", "black");
+    citebutton.style("padding", "20px 40px");
+
 }
 
 function draw() {
@@ -86,4 +93,8 @@ save("selfie.png");
 function goBack() {
   // let val = color(random(255),random(255),random(255));
   window.location='index.html';
+}
+function cite() {
+  // let val = color(random(255),random(255),random(255));
+  window.location='citation.html';
 }
