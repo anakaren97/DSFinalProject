@@ -69,13 +69,9 @@ function draw() {
   fill(255);
   // ellipse(mouseX, mouseY, circle_size_x, circle_size_y);
   // noCursor();
-  textAlign(CENTER, CENTER);
-  textSize(50);
-  fill(255, 23, 220);
-  text(timer, width/2, 700);
 
   ///// Page Timer
-  if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+  if (frameCount % 30 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
       timer --;
     }
     if (timer == 0) {

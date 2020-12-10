@@ -62,7 +62,7 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  background(0);
   image(img, 0, -50, 1500, 900);
 	image(webCamFeed, 257, 102, 650, 545);
 
