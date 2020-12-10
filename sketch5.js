@@ -1,6 +1,5 @@
 let button;
 var video;
-let mic, fft;
 let input;
 let analyzer;
 let img;
@@ -16,12 +15,8 @@ var vScale = 16;
 let camera;
 let bgVideo;
 
-//function preload() {
- //img = loadImage('assets/backvan.png');
-//}
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  //background(color(random(255),random(255),random(255)));
   Shutter = createButton('Take a Photo');
   Shutter.style('background-color', 'pink')
   Shutter.position(windowWidth/2.15,650);
@@ -67,9 +62,6 @@ function setup() {
     fft = new p5.FFT();
     fft.setInput(input);
 
-    //van image
-     //image(img, width/3, 200);
-    // img.style("z-index", "5");
 
 }
 
@@ -137,16 +129,13 @@ save("selfie.png");
 }
 
 function goBack() {
-  // let val = color(random(255),random(255),random(255));
   window.location='index.html';
 }
 
 function page6() {
-  // let val = color(random(255),random(255),random(255));
   window.location='page6.html';
 }
 
 function previous() {
-  // let val = color(random(255),random(255),random(255));
   window.location='page4.html';
 }

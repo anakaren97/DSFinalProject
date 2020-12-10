@@ -11,6 +11,9 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
+  cam = createCapture(VIDEO);
+  cam.size(20, 20);
+  cam.hide();
   //video for stars
   button1 = createButton('Next');
   button1.position(1200,  630);
@@ -103,25 +106,8 @@ function draw() {
   plane(200, 200); // Back wall
   pop();
 
-  const x = mouseX - width / 2;
-  const y = mouseY - height / 2;
 
-  const Q = createVector(0, 0, eyeZ); // A point on the ray and the default position of the camera.
-  const v = createVector(x, y, -eyeZ); // The direction vector of the ray.
 
-  let intersect; // The point of intersection between the ray and a plane.
-  let closestLambda = eyeZ * 10; // The draw distance.
-
-  for (let x = 0; x < objects.length; x += 1) {
-    let object = objects[x];
-    let lambda = object.getLambda(Q, v); // The value of lambda where the ray intersects the object
-
-    if (lambda < closestLambda && lambda > 0) {
-      // Find the position of the intersection of the ray and the object.
-      intersect = p5.Vector.add(Q, p5.Vector.mult(v, lambda));
-      closestLambda = lambda;
-    }
-  }
 
   //van
   push();
@@ -165,23 +151,12 @@ function draw() {
   pop();
   // Cursor
   push();
-  translate(intersect);
-  fill(237, 34, 93);
-  sphere(10);
+  translate(mouseX - width / 2, mouseY - height / 2);
+  texture(cam);
+  sphere(20);
   pop();
 }
 
-// Class for a plane that extends to infinity.
-class IntersectPlane {
-  constructor(n1, n2, n3, p1, p2, p3) {
-    this.normal = createVector(n1, n2, n3); // The normal vector of the plane
-    this.point = createVector(p1, p2, p3); // A point on the plane
-    this.d = this.point.dot(this.normal);
-  }
-
-  getLambda(Q, v) {
-    return (-this.d - this.normal.dot(Q)) / this.normal.dot(v);
-  }
 }
 
 function page3() {
@@ -189,11 +164,9 @@ function page3() {
 }
 
 function goBack() {
-  // let val = color(random(255),random(255),random(255));
   window.location='index.html';
 }
 
 function previous() {
-  // let val = color(random(255),random(255),random(255));
   window.location='index.html';
 }
