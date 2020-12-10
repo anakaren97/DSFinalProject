@@ -1,5 +1,6 @@
 html, body {
   margin: -30px;
+   background: black;
   /* padding: -30px; */
 
 }
@@ -9,7 +10,6 @@ canvas {
 }
 
 body {
-  /* background: black; */
   font-family: "Oswald", sans-serif;
   font-style: italic;
 }
