@@ -37,7 +37,7 @@ body {
 .glitch {
   color: rgb(223, 191, 191);
   position: relative;
-  font-size: 7.5vw;
+  font-size: 5.5vw;
   // margin: 70px 200px;
   animation: glitch 5s 5s infinite;
 }
@@ -139,8 +139,8 @@ body {
 .subtitle {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
-  font-size: .9vw;
-  color: rgba(255, 23, 220);
+  font-size: 1.1vw;
+  color: white;
   text-transform: uppercase;
   letter-spacing: .1em;
   text-align: center;
@@ -152,7 +152,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
   font-size: 1.5vw;
-  color: rgba(255, 23, 220);
+    color: white;
   text-transform: uppercase;
   letter-spacing: .1em;
   text-align: center;
@@ -163,8 +163,8 @@ body {
 .subtitle3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
-  font-size: .9vw;
-  color: rgba(255, 23, 220);
+  font-size: 1.1vw;
+  color: white;
   text-transform: uppercase;
   letter-spacing: .1em;
   text-align: center;
@@ -177,8 +177,8 @@ body {
 .subtitle4 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
-  font-size: .9vw;
-  color: rgba(255, 23, 220);
+  font-size: 1.1vw;
+  color: white;
   text-transform: uppercase;
   letter-spacing: .1em;
   text-align: center;
