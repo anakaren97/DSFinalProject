@@ -16,7 +16,7 @@ var vScale = 15;
 let fillColorR = 0;
 let fillColorG = 50;
 let fillColorB = 100;
-let shape = 20;
+let shape = 10;
 var vScale = 16;
 
 
@@ -67,7 +67,7 @@ function draw() {
 	image(webCamFeed, 257, 102, 650, 545);
 
   webCamFeed.loadPixels();
-  translate(windowWidth/5, windowHeight/7);
+  translate(windowWidth/5.25, windowHeight/7);
   for (var y = 0; y < webCamFeed.height; y++) {
     for (var x = 0; x < webCamFeed.width; x++) {
       var index = (webCamFeed.width - x + 1 + (y * webCamFeed.width)) * 4;
