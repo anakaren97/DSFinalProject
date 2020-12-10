@@ -68,7 +68,7 @@ function draw() {
   background(0);
 
   ///// Page Timer //////
-  if (frameCount % 20 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+  if (frameCount % 30 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
       timer --;
     }
     if (timer == 0) {
