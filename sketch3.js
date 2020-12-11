@@ -22,12 +22,12 @@ function setup() {
   button1.style("background-color", "black");
   button1.style("padding", "20px 40px");
 
-  button2 = createButton('Back');
-  button2.position(80,  630);
-  button2.mousePressed(previous);
-  button2.style("color", "white");
-  button2.style("background-color", "black");
-  button2.style("padding", "20px 40px");
+  // button2 = createButton('Back');
+  // button2.position(80,  630);
+  // button2.mousePressed(previous);
+  // button2.style("color", "white");
+  // button2.style("background-color", "black");
+  // button2.style("padding", "20px 40px");
 
   backbutton = createButton('Restart');
   backbutton.position(1200,  60);
@@ -39,7 +39,7 @@ function setup() {
 }
 
 function draw() {
-  background(255, 255, 0, 3);
+  // background(255, 255, 0, 3);
 
     //FOR IMAGE BECAUSE DOES NOT LOAD IF NOT HOSTED
     image(img, circle_x, circle_y, circle_size_x, circle_size_y);
@@ -48,8 +48,8 @@ function draw() {
     // ellipse(circle_x, circle_y, circle_size_x, circle_size_y);
 
 
-    if(mouseIsPressed){
-    circle_y -= 7;
+    if(keyIsDown(UP_ARROW)){
+    circle_y -= 1;
 
     circle_x += random(-75, 75);
     circle_y += random(-25, 25);
