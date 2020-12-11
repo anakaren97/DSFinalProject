@@ -249,92 +249,59 @@ img {
 
 /* /////BUTTONS////// */
 
-.wrap1{
-  width: 216px;
-  height: 68px;
-  background: #d15ecb;
-  margin: 50px auto;
-  border-radius: 34px;
-  box-shadow:
-    inset 0 30px 50px #d15ecb;
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+
+.buttonContainer {
+  width: 400px;
+  height: 400px;
   position: fixed;
+  /* left: 0; */
   bottom: 0;
-  left: 35px;
+  /* top: 0; */
+  right: 0;
+  /* transform: translate(-50%, -50%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.wrap2{
-  width: 216px;
-  height: 68px;
-  background: #d15ecb;
-  margin: 50px auto;
-  border-radius: 34px;
-  box-shadow:
-    inset 0 30px 50px #d1d1d1;
-  position: fixed;
-  bottom: 0;
-  right: 35px;
+.center {
+  width: 180px;
+  height: 60px;
+  position: absolute;
 }
 
-.wrap3{
-  width: 216px;
-  height: 68px;
-  background: #d15ecb;
-  margin: 50px auto;
-  border-radius: 34px;
-  box-shadow:
-    inset 0 30px 50px #d1d1d1;
-  position: fixed;
-  bottom: 0;
+.btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #d15ecb;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+svg {
+  position: absolute;
+  left: 0;
   top: 0;
-  right: 35px;
-
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
 }
 
-.wrap:before{
-  content:"";
-  width: 206px;
-  height:58px;
-  border-radius: 29px;
-  background: #e9d7be;
-   box-shadow:
-    inset 0 30px 50px #a5a4a4;
-    z-index: 10px;
-  position: absolute;
-  left: 5px;
-  top: 5px;
+.btn:hover {
+  transition: 1s ease-in-out;
+  background: #d15ecb;
 }
 
-.wrap:after{
-  content:"";
-  width: 200px;
-  height:52px;
-  border-radius: 26px;
-  background: -webkit-linear-gradient(top, #fe9810 0%,#e75400 61%,#e75400 91%,#ea8810 100%);
-  box-shadow:
-    inset 0 3px 20px rgba(0, 0, 0, 0.8);
-  position: absolute;
-  left: 10px;
-  top: 8px;
-  transition: all 1s ease-in-out;
+.btn:hover svg {
+  stroke-dashoffset: -480;
 }
 
-.button{
-  display: inline-block;
-  width: 115px;
-  height: 52px;
-  border-radius: 30px;
-  background: -webkit-linear-gradient(top, #efeeee 0%,#bcb9b8 100%);
-  border-top: solid 2px #fafafa;
-  border-bottom: solid 2px #ada39d;
-  box-shadow:
-    1px 6px 7px rgba(0, 0, 0, 0.5),
-    0 0 5px rgba(0, 0, 0, 0.4);
-  position: relative;
-  top: 5px;
-  left: 6px;
-  z-index: 99;
-}
-
+<<<<<<< Updated upstream
 .button:before{
   content: "";
   width: 36px;
@@ -548,3 +515,10 @@ img {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 } */
+=======
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+>>>>>>> Stashed changes
