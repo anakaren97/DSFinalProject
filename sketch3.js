@@ -15,27 +15,6 @@ function setup() {
   circle_size_x = 150;
   circle_size_y = 100;
 
-  // button1 = createButton('Next');
-  // button1.position(1200,  630);
-  // button1.mousePressed(page4);
-  // button1.style("color", "white");
-  // button1.style("background-color", "black");
-  // button1.style("padding", "20px 40px");
-
-  // button2 = createButton('Back');
-  // button2.position(80,  630);
-  // button2.mousePressed(previous);
-  // button2.style("color", "white");
-  // button2.style("background-color", "black");
-  // button2.style("padding", "20px 40px");
-
-  // backbutton = createButton('Restart');
-  // backbutton.position(1200,  60);
-  // backbutton.mousePressed(goBack);
-  // backbutton.style("color", "white");
-  // backbutton.style("background-color", "black");
-  // backbutton.style("padding", "20px 40px");
-
 }
 
 function draw() {

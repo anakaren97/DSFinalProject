@@ -20,7 +20,7 @@ function setup() {
   Shutter = createButton('Take a Photo');
   Shutter.style('background-color', 'pink')
   Shutter.position(windowWidth/2.15,650);
-  Shutter.size(90,40);
+  Shutter.size(120,60);
   Shutter.mousePressed(takePhoto);
   bgVideo = loadImage('assets/backvan.png'); // Load the image
 
@@ -28,33 +28,13 @@ function setup() {
   g = random(255);
   b = random(255);
 
-  button1 = createButton('Next');
-  button1.position(1200,  630);
-  button1.mousePressed(page6);
-  button1.style("color", "white");
-  button1.style("background-color", "black");
-  button1.style("padding", "20px 40px");
-
-  button2 = createButton('Back');
-  button2.position(80,  630);
-  button2.mousePressed(previous);
-  button2.style("color", "white");
-  button2.style("background-color", "black");
-  button2.style("padding", "20px 40px");
-
-  backbutton = createButton('Restart');
-  backbutton.position(1200,  60);
-  backbutton.mousePressed(goBack);
-  backbutton.style("color", "white");
-  backbutton.style("background-color", "black");
-  backbutton.style("padding", "20px 40px");
-
   //camera
   pixelDensity(1);
   video = createCapture(VIDEO);
   video.size(370 / vScale, 240 / vScale);
   video.position(width/7.5, 100);
   video.hide();
+
     // Create an Audio input
     input = new p5.AudioIn();
     analyzer = new p5.Amplitude();
@@ -68,6 +48,7 @@ function setup() {
 function draw() {
   background(255);
   fill(back);
+
   rect(windowWidth/1.85, windowHeight/2.08, 370, 240 );
 
   ///// Page Timer
