@@ -14,8 +14,8 @@ let img;
 let dingdong;
 let timer = 30;
 let onScreen = false;
-let xSpeed = 5;
-let ySpeed = 5;
+let xSpeed = 10;
+let ySpeed = 10;
 
 function setup() {
   createCanvas(1500, 900);
@@ -37,9 +37,8 @@ function setup() {
   circle_x = 200;
   circle_y = 200;
 
-  for (var i = 0; i < 30; i++) {
+  for (var i = 0; i < 25; i++) {
     bubbles[i] = new Bubble(random(width), random(height));
-
   }
 }
 
@@ -66,7 +65,7 @@ function draw() {
            bubbles[i].changeColor();
            ///TO BE UNCOMMENTED WHEN HOSTED//////
            masterVolume(0.03, [10])
-           // dingdong.play();
+           dingdong.play();
          }
        }
 
@@ -80,7 +79,6 @@ function draw() {
 
   ///TO BE UNCOMMENTED WHEN HOSTED//////
     image(img, mouseX - 50, mouseY - 50, 150, 100);
-    noCursor();
   /////////////////////////////////////
 
 }
@@ -111,8 +109,9 @@ function Bubble(tempX, tempY) {
 
   this.update = function() {
 
-    this.x += xSpeed;
-    this.y += ySpeed;
+    this.x -= 1;
+    // this.y -= 1;
+    this.y = this.y + random(-5, 5);
 
     if (this.x < 0 || this.x > windowWidth) {
       xSpeed *= -1;

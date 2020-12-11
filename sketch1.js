@@ -3,10 +3,11 @@ let eyeZ;
 let vid;
 let vidline;
 let van;
-
+let cam;
 function preload() {
   // Load model with normalise parameter set to true
   van = loadModel('assets/VolksvagenVan.obj', true);
+
 }
 
 function setup() {
@@ -14,28 +15,8 @@ function setup() {
   cam = createCapture(VIDEO);
   cam.size(20, 20);
   cam.hide();
+
   //video for stars
-  button1 = createButton('Next');
-  button1.position(1200,  630);
-  button1.mousePressed(page3);
-  button1.style("color", "white");
-  button1.style("background-color", "black");
-  button1.style("padding", "20px 40px");
-
-  button2 = createButton('Back');
-  button2.position(80,  630);
-  button2.mousePressed(previous);
-  button2.style("color", "white");
-  button2.style("background-color", "black");
-  button2.style("padding", "20px 40px");
-
-  backbutton = createButton('Restart');
-  backbutton.position(1200,  60);
-  backbutton.mousePressed(goBack);
-  backbutton.style("color", "white");
-  backbutton.style("background-color", "black");
-  backbutton.style("padding", "20px 40px");
-
  vid = createVideo(['video/star.mp4']);
  vidline = createVideo(['video/line.mp4']);
  vid.elt.muted = true;
@@ -106,9 +87,6 @@ function draw() {
   plane(200, 200); // Back wall
   pop();
 
-
-
-
   //van
   push();
   translate(0,0,100);
@@ -155,18 +133,4 @@ function draw() {
   texture(cam);
   sphere(20);
   pop();
-}
-
-}
-
-function page3() {
-  window.location='page3.html';
-}
-
-function goBack() {
-  window.location='index.html';
-}
-
-function previous() {
-  window.location='index.html';
 }

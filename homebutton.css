@@ -4,10 +4,10 @@
 
 .wrapper{
   position: fixed;
-  top: 60%;
-  left: 80%;
-  -webkit-transform: translate(-70%, -50%);
-          transform: translate(-70%, -50%);
+  top: 85%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -70%);
+          transform: translate(-50%, -70%);
 }
 
 .link_wrapper{
@@ -47,7 +47,7 @@ a{
 }
 
 .icon svg{
-  width: 40px;
+  width: 30px;
   position: absolute;
   top: calc(50% - 15px);
   left: calc(50% - 15px);

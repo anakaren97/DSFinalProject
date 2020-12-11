@@ -35,12 +35,10 @@ function setup() {
   img = loadImage('video/photobooth_2.jpeg'); // Load the image
 
     Shutter = createButton('Take a Photo');
-    Shutter.style('background-color', 'pink')
+    Shutter.style('background-color', 'purple');
     Shutter.position(500,450);
     Shutter.size(90,40);
     Shutter.mousePressed(takePhoto);
-
-
 
 }
 
@@ -61,7 +59,7 @@ function draw() {
       var w = map(bright, 0, 255, 0, vScale);
       var r = map(bright, 0, random(0,255), 0, vScale);
       noStroke();
-      fill(153, 109, 199);
+      fill(209, 94, 203);
       rectMode(CENTER);
       rect(x *16, y * 16,shape,w, shape);
     }

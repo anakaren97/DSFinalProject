@@ -80,6 +80,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.page9Container {
+  width: 400px;
+  height: 400px;
+  position: fixed;
+  bottom: -100px;
+  left: -50px;
+  /* transform: translate(-50%, -50%); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .center {
   width: 180px;
   height: 60px;
@@ -93,7 +107,27 @@
   background: transparent;
   border: 4px solid #d15ecb;
   outline: none;
-  transition: 2s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+.page9btn {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: #0ec7c4;
+  border: 4px solid #0ec7c4;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+.page9btn2 {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: #ba2abf;
+  border: 4px solid #ba2abf;
+  outline: none;
+  transition: 1s ease-in-out;
 }
 
 svg {
@@ -104,7 +138,19 @@ svg {
   stroke: #ffff;
   stroke-dasharray: 150 480;
   stroke-dashoffset: 150;
-  transition: 2s ease-in-out;
+  transition: 1s ease-in-out;
+}
+
+
+svg2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #000;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
 }
 
 span{
@@ -113,11 +159,35 @@ span{
   color: white;
 }
 
+span2{
+  font-weight: bold;
+  font-size: 13px;
+  color: white;
+}
+
 .btn:hover {
-  transition: 2s ease-in-out;
+  transition: 1s ease-in-out;
   background: #d15ecb;
 }
 
 .btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.page9btn:hover {
+  transition: 1s ease-in-out;
+  background: #000;
+}
+
+.page9btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.page9btn2:hover {
+  transition: 1s ease-in-out;
+  background: #000;
+}
+
+.page9btn2:hover svg {
   stroke-dashoffset: -480;
 }

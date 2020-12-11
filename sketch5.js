@@ -1,5 +1,5 @@
 let button;
-var video;
+let video;
 let input;
 let analyzer;
 let img;
@@ -18,7 +18,7 @@ let bgVideo;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   Shutter = createButton('Take a Photo');
-  Shutter.style('background-color', 'pink')
+  Shutter.style('background-color', '#d15ecb', 'font-size', '12px')
   Shutter.position(windowWidth/2.15,650);
   Shutter.size(120,60);
   Shutter.mousePressed(takePhoto);
@@ -42,11 +42,10 @@ function setup() {
     fft = new p5.FFT();
     fft.setInput(input);
 
-
 }
 
 function draw() {
-  background(255);
+  background(0, 20);
   fill(back);
 
   rect(windowWidth/1.85, windowHeight/2.08, 370, 240 );

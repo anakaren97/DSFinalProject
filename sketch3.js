@@ -28,10 +28,11 @@ function draw() {
 
 
     if(keyIsDown(UP_ARROW)){
-    circle_y -= 1;
+    circle_y -= 3;
 
-    circle_x += random(-75, 75);
+    circle_x += random(-15, 15);
     circle_y += random(-25, 25);
+
       if(circle_y < 0){
         window.location='page4.html';
       }
