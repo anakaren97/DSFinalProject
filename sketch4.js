@@ -14,8 +14,6 @@ let timer = 30;
 function setup() {
   img = loadImage('video/bus.png'); // Load the image
 
-
-
   w = 1500;
   h = 900;
   capture = createCapture(VIDEO);
@@ -34,7 +32,7 @@ function setup() {
   circle_y =  mouseY;
   circle_size_x = 150;
   circle_size_y = 100;
-  
+
 
 }
 

@@ -18,7 +18,6 @@ function setup() {
 }
 
 function draw() {
-  // background(255, 255, 0, 3);
 
     //FOR IMAGE BECAUSE DOES NOT LOAD IF NOT HOSTED
     image(img, circle_x, circle_y, circle_size_x, circle_size_y);

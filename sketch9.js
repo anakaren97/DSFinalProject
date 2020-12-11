@@ -23,6 +23,8 @@ var vScale = 16;
 
 function setup() {
   createCanvas(1500,900);
+  img = loadImage('video/photobooth_2.jpeg'); // Load the image
+
   pixelDensity(1);
   webCamFeed = createCapture(VIDEO);
   webCamFeed.size(650 / vScale, 545 / vScale);
@@ -32,12 +34,10 @@ function setup() {
   g = random(255);
   b = random(255);
 
-  img = loadImage('video/photobooth_2.jpeg'); // Load the image
-
     Shutter = createButton('Take a Photo');
-    Shutter.style('background-color', 'purple');
-    Shutter.position(500,450);
-    Shutter.size(90,40);
+    Shutter.style('background-color', 'green');
+    Shutter.position(500,500);
+    Shutter.size(120,70);
     Shutter.mousePressed(takePhoto);
 
 }
@@ -48,7 +48,7 @@ function draw() {
 	image(webCamFeed, 257, 102, 650, 545);
 
   webCamFeed.loadPixels();
-  translate(windowWidth/5.25, windowHeight/7);
+  translate(windowWidth/5.35, windowHeight/7);
   for (var y = 0; y < webCamFeed.height; y++) {
     for (var x = 0; x < webCamFeed.width; x++) {
       var index = (webCamFeed.width - x + 1 + (y * webCamFeed.width)) * 4;
