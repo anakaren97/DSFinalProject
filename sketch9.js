@@ -25,17 +25,12 @@ function setup() {
   createCanvas(1500,900);
   pixelDensity(1);
   webCamFeed = createCapture(VIDEO);
-  // webCamFeed.size(650, 545);
   webCamFeed.size(650 / vScale, 545 / vScale);
   webCamFeed.position(257,102);
   webCamFeed.hide();
   r = random(255);
   g = random(255);
   b = random(255);
-  // filter = createCapture(VIDEO);
-  // filter.size(650 / vScale ,545 / vScale );
-  // filter.position(vScale / 257 , 102 / vScale );
-  // filter.hide();
 
   img = loadImage('video/photobooth_2.jpeg'); // Load the image
 
@@ -45,19 +40,7 @@ function setup() {
     Shutter.size(90,40);
     Shutter.mousePressed(takePhoto);
 
-    backbutton = createButton('Restart');
-    backbutton.position(1290,  60);
-    backbutton.mousePressed(goBack);
-    backbutton.style("color", "white");
-    backbutton.style("background-color", "black");
-    backbutton.style("padding", "20px 40px");
 
-    citebutton = createButton('Citation');
-    citebutton.position(100,  60);
-    citebutton.mousePressed(cite);
-    citebutton.style("color", "white");
-    citebutton.style("background-color", "black");
-    citebutton.style("padding", "20px 40px");
 
 }
 
@@ -88,13 +71,4 @@ function draw() {
 
 function takePhoto(){
 save("selfie.png");
-}
-
-function goBack() {
-  // let val = color(random(255),random(255),random(255));
-  window.location='index.html';
-}
-function cite() {
-  // let val = color(random(255),random(255),random(255));
-  window.location='citation.html';
 }
