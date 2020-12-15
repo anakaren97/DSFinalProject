@@ -16,13 +16,14 @@ let camera;
 let bgVideo;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1800, 1000);
   Shutter = createButton('Take a Photo');
   Shutter.style('background-color', '#d15ecb', 'font-size', '12px')
   Shutter.position(windowWidth/2.15,650);
   Shutter.size(120,60);
   Shutter.mousePressed(takePhoto);
   bgVideo = loadImage('assets/backvan.png'); // Load the image
+  img = loadImage('assets/page5_bg.jpeg'); // Load the image
 
   r = random(255);
   g = random(255);
@@ -45,7 +46,9 @@ function setup() {
 }
 
 function draw() {
-  background(0, 20);
+  background(img);
+  // image(img, 0, -100, 2000, 2000);
+
   	image(video, windowWidth/2.55, windowHeight/3.1, 375 , 240 );
   fill(back, 0.1);
 
