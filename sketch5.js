@@ -6,7 +6,7 @@ let img;
 let timer = 30;
 var Shutter;
 var vScale = 15;
-let back = 51;
+let back = 21;
 let fillColorR = 0;
 let fillColorG = 50;
 let fillColorB = 100;
@@ -46,9 +46,10 @@ function setup() {
 
 function draw() {
   background(0, 20);
-  fill(back);
+  	image(video, windowWidth/2.55, windowHeight/3.1, 375 , 240 );
+  fill(back, 0.1);
 
-  rect(windowWidth/1.85, windowHeight/2.08, 370, 240 );
+  rect(windowWidth/1.95, windowHeight/2.08, 370, 240 );
 
   ///// Page Timer
   if (frameCount % 30 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
@@ -94,7 +95,7 @@ function keyPressed() {
     fillColorR = 0;
     fillColorG = 50;
     fillColorB =  100;
-    back = 51;
+    back = 21;
   } else {
     fillColorR = random(0,255);
     fillColorG = random(0,255);
