@@ -9,6 +9,10 @@
   -webkit-transform: translate(-50%, -70%);
           transform: translate(-50%, -70%);
 }
+.wrapper, .p3c{
+  left: 80%;
+}
+
 
 .link_wrapper{
   position: relative;
@@ -32,11 +36,9 @@ a {
   -webkit-transition: all .35s;
   transition: all .35s;
 }
-a, .p1{
+a, .p1{ width: 450px; }
+.p3c, a{width: 150px; height: 40px;   line-height: 35px; font-size: 20px; }
 
-  width: 450px;
-
-}
 
 .icon{
   width: 70px;
@@ -52,6 +54,11 @@ a, .p1{
   -webkit-transition: all .35s;
   transition: all .35s;
 }
+.p3c, .icon{
+  width: 35px;
+  height: 35px;
+}
+
 
 .icon svg{
   width: 30px;
@@ -64,6 +71,10 @@ a, .p1{
   -webkit-transition: all .35s;
   transition: all .35s;
 }
+.p3c, .icon svg{
+    width: 25px;
+}
+
 
 a:hover{
   width: 250px;
@@ -71,9 +82,9 @@ a:hover{
   background: transparent;
   color: #d15ecb;
 }
-a:hover, .p1{
-  width: 450px;
-}
+a:hover, .p1{  width: 450px;}
+.p3c, a:hover{  width: 150px;}
+
 
 a:hover + .icon{
   border: 3px solid #d15ecb;
