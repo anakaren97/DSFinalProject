@@ -130,7 +130,9 @@ function draw() {
   // Cursor
   push();
   translate(mouseX - width / 2, mouseY - height / 2);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
   texture(cam);
-  sphere(20);
+  sphere(10);
   pop();
 }
