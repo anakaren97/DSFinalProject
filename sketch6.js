@@ -3,7 +3,7 @@ let button;
 var bubbles = [];
 
 let camera;
-let song;
+// let song;
 let r, g, b;
 let mic, fft;
 let input;
@@ -144,19 +144,4 @@ function Bubble(tempX, tempY) {
     }
 
 
-}
-
-function page7() {
-  // let val = color(random(255),random(255),random(255));
-  window.location='page7.html';
-}
-
-function goBack() {
-  // let val = color(random(255),random(255),random(255));
-  window.location='index.html';
-}
-
-function previous() {
-  // let val = color(random(255),random(255),random(255));
-  window.location='page5.html';
 }
