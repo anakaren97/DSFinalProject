@@ -154,20 +154,34 @@ function draw() {
 
   // Cursor
   push();
+<<<<<<< HEAD
   translate(intersect);
   texture(cam);
   sphere(40);
   pop();
 }
 
+=======
+  translate(mouseX - width / 2, mouseY - height / 2);
+  rotateX(frameCount * 0.01);
+  rotateY(frameCount * 0.01);
+  texture(cam);
+  sphere(10);
+  pop();
+}
+// Class for a plane that extends to infinity.
+>>>>>>> main
 class IntersectPlane {
   constructor(n1, n2, n3, p1, p2, p3) {
     this.normal = createVector(n1, n2, n3); // The normal vector of the plane
     this.point = createVector(p1, p2, p3); // A point on the plane
     this.d = this.point.dot(this.normal);
   }
+<<<<<<< HEAD
 
   getLambda(Q, v) {
     return (-this.d - this.normal.dot(Q)) / this.normal.dot(v);
   }
 }
+=======
+>>>>>>> main
