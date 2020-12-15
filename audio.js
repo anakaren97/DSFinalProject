@@ -45,4 +45,4 @@ function update()
 }
 setInterval(update,1000);
 // default is 1000 ms; but for testing I set that to 0 ms..
-I guess it's exhausting JS interpreter (don't know much about it).
+// I guess it's exhausting JS interpreter (don't know much about it).

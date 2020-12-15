@@ -3,16 +3,20 @@
     <script src="p5.sound.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="homebutton.css">
+    <!-- <link rel="html" type="text/html" href="player.html"> -->
 
     <meta charset="utf-8">
 
   </head>
   <body>
-
     <video autoplay muted loop id="myVideo2">
     <source src="video/glitch.mp4">
     </video>
-    <embed src="assets/bg_song.mp3" autopstart="true" loop="true" width="0" height="0">
+    <!-- <embed src="assets/bg_song.mp3" autopstart="true" loop="true" width="0" height="0"> -->
+    <audio id="audioplayer" autobuffer="" loop="true" preload="auto" src="assets/bg_song.mp3">
+    </audio>
+    <!-- you must include JS after the player; otherwise you will get undifiend object-->
+    <script src="audio.js"></script>
 
       <div class="container2">
         <div class="glitch" data-text="Welcome to: The Van Journey - 3000">Welcome to: The Van Journey - 3000</div>
