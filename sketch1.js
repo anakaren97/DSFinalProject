@@ -136,3 +136,10 @@ function draw() {
   sphere(10);
   pop();
 }
+// Class for a plane that extends to infinity.
+class IntersectPlane {
+  constructor(n1, n2, n3, p1, p2, p3) {
+    this.normal = createVector(n1, n2, n3); // The normal vector of the plane
+    this.point = createVector(p1, p2, p3); // A point on the plane
+    this.d = this.point.dot(this.normal);
+  }
