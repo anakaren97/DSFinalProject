@@ -191,3 +191,88 @@ span2{
 .page9btn2:hover svg {
   stroke-dashoffset: -480;
 }
+
+
+
+/* ///////BACK BUTTON ///// */
+
+
+.wrapperBack {
+  position: fixed;
+  top: 85%;
+  right: 10%;
+  -webkit-transform: translate(-700%, -30%);
+          transform: translate(-700%, -30%);
+}
+
+a {
+  display: block;
+  border-radius: 12px;
+  width: 250px;
+  height: 100px;
+  line-height: 0px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #d15ecb;
+  text-align: center;
+  color: #fff;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 7px solid #d15ecb;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+a, .p1{
+  width: 450px;
+}
+.p3c, a{
+  width: 150px; height: 35px;   line-height: 35px; font-size: 20px;
+}
+
+
+.icon{
+  /* width: 70px;
+  height: 70px; */
+  border-radius: 14px;
+  border: 2px solid transparent;
+  position: absolute;
+  -webkit-transform: rotate(-225deg);
+          transform: rotate(-225deg);
+  right: 0;
+  top: 5px;
+  z-index: -1;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  width: 35px;
+  height: 35px;
+}
+
+
+.icon svg{
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  fill: #d15ecb;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  width: 25px;
+
+}
+
+
+
+a:hover{
+  width: 150px;
+  border: 2px solid #d15ecb;
+  background: transparent;
+  color: #d15ecb;
+}
+
+
+a:hover + .icon{
+  border: 3px solid #d15ecb;
+  left: -35%;
+}
