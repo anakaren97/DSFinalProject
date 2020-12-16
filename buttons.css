@@ -1,6 +1,8 @@
-
 /* ///////BACK BUTTON ///// */
 
+.link_wrapper{
+  position: relative;
+}
 
 .wrapperBack {
   position: fixed;
@@ -10,14 +12,14 @@
           transform: translate(-650%, -30%);
 }
 
+/* ///////FIRST TWO PAGES BUTTONS ///// */
+
 .Homewrapper {
   position: fixed;
   top: 80%;
-  right: 35%;
+  right: 40%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-
-
 }
 
 a {
@@ -42,9 +44,10 @@ a, .p1{
   width: 450px;
 }
 .p3c, a{
-  width: 200px; height: 100px;   line-height: 100px; font-size: 50px;
+  width: 200px; height: 100px;   line-height: 100px; font-size: 30px;
 }
 
+/* ///////BACK BUTTON ICON ///// */
 
 .backicon{
   /* width: 70px;
@@ -63,22 +66,6 @@ a, .p1{
   height: 35px;
 }
 
-.homeicon{
-  width: 70px;
-  height: 70px;
-  border-radius: 14px;
-  border: 2px solid transparent;
-  position: absolute;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  right: 0;
-  top: 10px;
-  z-index: -1;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-}
-
-
 .backicon svg{
   position: absolute;
   top: calc(50% - 15px);
@@ -90,6 +77,23 @@ a, .p1{
   transition: all .35s;
   width: 25px;
 
+}
+
+/* ///////HOME BUTTON ICON ///// */
+
+.homeicon{
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  position: absolute;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  right: 50px;
+  top: 10px;
+  z-index: -1;
+  -webkit-transition: all .35s;
+  transition: all .35s;
 }
 
 .homeicon svg{
@@ -105,7 +109,7 @@ a, .p1{
 
 }
 
-
+/* ///////OVERALL HOVER EFFECT ///// */
 
 a:hover{
   width: 250px;
@@ -113,6 +117,9 @@ a:hover{
   background: transparent;
   color: #d15ecb;
 }
+
+a:hover, .p1{  width: 450px;}
+.p3c, a:hover{  width: 150px;}
 
 
 a:hover + .backicon{
@@ -122,5 +129,5 @@ a:hover + .backicon{
 
 a:hover + .homeicon{
   border: 3px solid #d15ecb;
-  right: -35%;
+  right: -65%;
 }
