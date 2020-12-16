@@ -8,7 +8,7 @@
 }
 .wrapper, .p3c{
   position: fixed;
-  top: 85%;
+  top: 86%;
   left: 85%;
   -webkit-transform: translate(-50%, -70%);
           transform: translate(-50%, -70%);
@@ -31,7 +31,7 @@ a {
   background: #d15ecb;
   text-align: center;
   color: #fff;
-  font-size: 50px;
+  font-size: 40px;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 7px solid #d15ecb;
@@ -39,7 +39,7 @@ a {
   transition: all .35s;
 }
 a, .p1{ width: 450px; }
-.p3c, a{width: 150px; height: 40px;   line-height: 35px; font-size: 20px; }
+.p3c, a{width: 150px; height: 40px;   line-height: 40px; font-size: 15px; }
 
 
 .icon{
@@ -51,7 +51,7 @@ a, .p1{ width: 450px; }
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   right: 0;
-  top: 10px;
+  top: 5px;
   z-index: -1;
   -webkit-transition: all .35s;
   transition: all .35s;
@@ -65,7 +65,7 @@ a, .p1{ width: 450px; }
 .icon svg{
   width: 30px;
   position: absolute;
-  top: calc(50% - 15px);
+  top: calc(50% - 12px);
   left: calc(50% - 15px);
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
