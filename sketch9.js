@@ -22,7 +22,7 @@ var vScale = 16;
 
 
 function setup() {
-  createCanvas(1900,1000);
+  createCanvas(2000, 1000);
   img = loadImage('video/photobooth_2.jpeg'); // Load the image
 
   pixelDensity(1);
@@ -43,8 +43,8 @@ function setup() {
 }
 
 function draw() {
-  background(img);
-  // image(img, 0, -50, 1500, 900);
+  background(0);
+  image(img, 0, -50, 1500, 900);
 	image(webCamFeed, 257, 102, 650, 545);
 
   webCamFeed.loadPixels();
